@@ -1,0 +1,30 @@
+.main-form {
+    width: 650px;
+    margin: auto;
+}
+
+body {
+    background-color: #87AFC7;
+}
+
+h2 {
+    text-align: center;
+    color: #fff;
+    background-color: rgb(73, 78, 92);
+}
+
+.form-check .form-check-label {
+    color: black;
+    font-weight: 600;
+}
+
+/* .bg-image {
+    background-image: url("nmims.jpg");
+    filter: blur(8px);
+
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+} */
