@@ -4,13 +4,20 @@
 }
 
 body {
-    background-color: #87AFC7;
+    background-color: #DCDCDC;
 }
+
+h1 {
+    font-size: 1200;
+    font-weight: bolder;
+    text-align: center;
+}
+
 
 h2 {
     text-align: center;
     color: #fff;
-    background-color: rgb(73, 78, 92);
+    background-color: rgb(192, 24, 24);
 }
 
 .form-check .form-check-label {
@@ -18,13 +25,9 @@ h2 {
     font-weight: 600;
 }
 
-/* .bg-image {
-    background-image: url("nmims.jpg");
-    filter: blur(8px);
-
-    height: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-
-} */
+footer {
+    text-align: center;
+    padding: 3px;
+    background-color: #111;
+    color: white;
+}

@@ -77,7 +77,7 @@ const NavBar = () => (
   </>
 );
 
-const InputComponent = ({ field }) => {
+const InputGroup = ({ field }) => {
   // console.log(field);
   return (
     <div className="form-group">
@@ -92,23 +92,6 @@ const InputComponent = ({ field }) => {
       />
     </div>
   );
-};
-
-const SelectorComponent = () => {
-  return (
-    <>
-      <div className="form-group">
-        <label htmlFor="gender">Gender</label>
-        <select name="gender" id="gender" className="form-control" required>
-          <option value="male">Male</option>
-          <option value="female">Female</option>
-        </select>
-      </div>
-    </>
-  );
-};
-const section = {
-  title: "Personal Details",
 };
 
 const PersonalDetails = () => {
@@ -174,10 +157,10 @@ const PersonalDetails = () => {
       <br />
       <div className="row">
         <div className="col">
-          <InputComponent field={nameField.firstName} />
+          <InputGroup field={nameField.firstName} />
         </div>
         <div className="col">
-          <InputComponent field={nameField.lastName} />
+          <InputGroup field={nameField.lastName} />
         </div>
       </div>
 
@@ -190,7 +173,7 @@ const PersonalDetails = () => {
       </div>
 
       {personalField.map((dataField, index) => (
-        <InputComponent key={index} field={dataField} />
+        <InputGroup key={index} field={dataField} />
       ))}
 
       <div className="form-group">
@@ -221,12 +204,12 @@ const Academics = () => {
       placeholder: "3.11",
     },
     {
-      text: "10th Percentage",
+      text: "10th Percentage:",
       name: "percent10",
       placeholder: "95.6",
     },
     {
-      text: "12th Percentage",
+      text: "12th Percentage:",
       name: "percent12",
       placeholder: "85.2",
     },
@@ -243,7 +226,7 @@ const Academics = () => {
         </select>
       </div>
       {acadField.map((dataField, index) => (
-        <InputComponent key={index} field={dataField} />
+        <InputGroup key={index} field={dataField} />
       ))}
       <br />
     </>
@@ -273,7 +256,7 @@ const Skills = () => {
       <h2>SKILLS</h2>
       <br />
       {skillField.map((dataField, index) => (
-        <InputComponent key={index} field={dataField} />
+        <InputGroup key={index} field={dataField} />
       ))}
     </>
   );
@@ -298,80 +281,187 @@ const Extracurricular = () => {
       <h2>EXTRACURRICULAR</h2>
       <br />
       {extraField.map((dataField, index) => (
-        <InputComponent key={index} field={dataField} />
+        <InputGroup key={index} field={dataField} />
       ))}
       <br />
     </>
   );
 };
 
-const Internship = () => (
-  <>
-    <h2>INTERNSHIPS</h2>
-    <div className="form-group internship-section" id="we">
-      <div className="intern_data"></div>
-      <div className="container text-centre" id="weaddbutton">
-        <br /> <br />
-        <button
-          // onClick="addNewIntern()"
-          className="btn btn-dark btn-sm"
-        >
+const DetailGroup = ({ detailField }) => {
+  return (
+    <>
+      {detailField.map((dataField, index) => (
+        <input
+          key={index}
+          className="form-control"
+          name={dataField.name}
+          placeholder={dataField.placeholder}
+          style={{ marginTop: "8px" }}
+        />
+      ))}
+    </>
+  );
+};
+
+const DescGroup = () => {
+  const [descCounter, setDescCounter] = useState([0]);
+  const addDescription = () =>
+    setDescCounter([...descCounter, descCounter.length]);
+  return (
+    <>
+      {descCounter.map((desc, index) => (
+        <input
+          key={index}
+          className="form-control"
+          name="desc_0"
+          placeholder="Description: Ex. Developed a responsive web-app "
+          style={{ marginTop: "8px" }}
+        />
+      ))}
+      <button
+        style={{ marginTop: "8px", marginBottom: "8px" }}
+        onClick={addDescription}
+        className="btn btn-dark btn-sm"
+      >
+        Add Description
+      </button>
+    </>
+  );
+};
+
+const Internship = () => {
+  const internField = [
+    {
+      placeholder: "Organization Name: TCS",
+      name: "internName",
+    },
+    {
+      placeholder: "Intern Role: FullStack Developer",
+      name: "internRole",
+    },
+    {
+      placeholder: "Work Duration: May 2021 - July 2021",
+      name: "internDur",
+    },
+  ];
+  const [internCounter, setInternCounter] = useState([0]);
+
+  const addInternship = () =>
+    setInternCounter([...internCounter, internCounter.length]);
+
+  return (
+    <>
+      <h2>INTERNSHIPS</h2>
+      <div className="form-group">
+        <h1>Internship Details:</h1>
+        <div className="intern_data">
+          {internCounter.map((internship, index) => (
+            <div key={index}>
+              <DetailGroup detailField={internField} />
+              <DescGroup />
+              <br />
+            </div>
+          ))}
+        </div>
+        <button onClick={addInternship} className="btn btn-dark btn-sm">
           Add Internship
         </button>
       </div>
-    </div>
-    <br />
-  </>
-);
+      <br />
+    </>
+  );
+};
 
-const Project = () => (
-  <>
-    <div>
+const Project = () => {
+  const projectField = [
+    {
+      placeholder: "Project Name: Gesture Controlled Robot",
+      name: "projName",
+    },
+    {
+      placeholder: "Tools & Tech used: Arduino, Raspberry Pi",
+      name: "projTool",
+    },
+    {
+      placeholder: "Project Duration: May 2021 - July 2021",
+      name: "projDur",
+    },
+  ];
+  const [projectCount, setProjectCount] = useState([0]);
+  const addProject = () =>
+    setProjectCount([...projectCount, projectCount.length]);
+
+  return (
+    <>
       <h2>PROJECTS</h2>
-      <div className="form-group project-section" id="pr">
-        <div className="project_data"></div>
-        <div className="container text-centre" id="prbutton">
-          <br /> <br />
-          <button
-            // onClick="addNewProject()"
-            className="btn btn-dark btn-sm"
-          >
-            Add Project
-          </button>
+      <div className="form-group">
+        <h1>Project Details:</h1>
+        <div className="intern_data">
+          {projectCount.map((project, index) => (
+            <div key={index}>
+              <DetailGroup detailField={projectField} />
+              <DescGroup />
+              <br />
+            </div>
+          ))}
         </div>
+        <button onClick={addProject} className="btn btn-dark btn-sm">
+          Add New Project
+        </button>
       </div>
       <br />
-    </div>
-  </>
-);
+    </>
+  );
+};
 
-const Leadership = () => (
-  <>
-    <div>
+const Leadership = () => {
+  const leadField = [
+    {
+      placeholder: "Organization Name: Student Council",
+      name: "leadName",
+    },
+    {
+      placeholder: "Role: President",
+      name: "leadRole",
+    },
+    {
+      placeholder: "Leadership Duration: May 2021 - July 2021",
+      name: "leadDur",
+    },
+  ];
+  const [leadCount, setLeadCount] = useState([0]);
+  const addLead = () => setLeadCount([...leadCount, leadCount.length]);
+
+  return (
+    <>
       <h2>LEADERSHIP</h2>
-      <div className="form-group project-section" id="le">
-        <div className="leadership_data"></div>
-        <div className="container text-centre" id="lebutton">
-          <br /> <br />
-          <button
-            // onClick="addNewLeadership()"
-            className="btn btn-dark btn-sm"
-          >
-            Add New Leadership Role
-          </button>
+      <div className="form-group">
+        <h1>Leadership Details:</h1>
+        <div className="intern_data">
+          {leadCount.map((lead, index) => (
+            <div key={index}>
+              <DetailGroup detailField={leadField} />
+              <DescGroup />
+              <br />
+            </div>
+          ))}
         </div>
+        <button onClick={addLead} className="btn btn-dark btn-sm">
+          Add New Leadership Role
+        </button>
       </div>
-    </div>
-  </>
-);
+    </>
+  );
+};
 
 const Footer = () => (
   <footer>
     <p>
       Made by
       <b>
-        Shivanshu Singh, Darrsheni Sapovadia, Rupali Vastani, Rushali Vastani ,
-        Manthan Tripathi and Milind Sathe
+        &nbsp;Milind Sathe, Shivanshu Singh, Darrsheni Sapovadia, Rupali
+        Vastani, Rushali Vastani and Manthan Tripathi
       </b>
       .
     </p>
@@ -379,20 +469,12 @@ const Footer = () => (
 );
 
 export default function Form() {
-  // Form states
-  const [name, setName] = useState("");
-  const [mobile, setMobile] = useState("");
-  const [email, setEmail] = useState("");
-  const [course, setCourse] = useState("Btech");
-  const [image, setImage] = useState(null);
-
   // Image upload ref
   const imageRef = useRef(null);
 
   // Sending data to backend for upload (except image for now)
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     const imgUpload = storage
       .ref(`images/${image.name}`)
       .put(image)
@@ -405,10 +487,6 @@ export default function Form() {
     });
 
     if (res.status == 201) {
-      setName("");
-      setMobile("");
-      setEmail("");
-      setCourse("Btech");
       imageRef.current.value = null;
     }
   };
@@ -416,6 +494,7 @@ export default function Form() {
   return (
     <>
       <NavBar />
+      {/* <h1>CV Information</h1> */}
       <div className="main-form needs-validation" noValidate>
         <PersonalDetails />
         <Academics />
@@ -423,7 +502,8 @@ export default function Form() {
         <Extracurricular />
         <Internship />
         <Project />
-        <button type="submit" className="btn btn-dark ">
+        <Leadership />
+        <button type="submit" className="text-center btn btn-dark ">
           Submit
         </button>
         <br />
