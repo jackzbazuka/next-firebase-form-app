@@ -77,39 +77,26 @@ const NavBar = () => (
   </>
 );
 
-const PersonalDetails = () => (
-  <>
-    <div>
-      <h2> PERSONAL DETAILS </h2>
-      <br />
-      <div className="row">
-        <div className="col">
-          <div className="form-group">
-            <label htmlFor="firstname">Firstname</label>
-            <input
-              type="text"
-              name="firstname"
-              id="firstname"
-              className="form-control"
-              placeholder="Joseph"
-              required
-            />
-          </div>
-        </div>
-        <div className="col">
-          <div className="form-group">
-            <label htmlFor="lastname">Lastname</label>
-            <input
-              type="text"
-              name="lastname"
-              id="lastname"
-              className="form-control"
-              placeholder="Morgan"
-              required
-            />
-          </div>
-        </div>
-      </div>
+const InputComponent = ({ field }) => {
+  // console.log(field);
+  return (
+    <div className="form-group">
+      <label htmlFor={field.name}>{field.text}</label>
+      <input
+        type={field.name}
+        name={field.name}
+        id={field.name}
+        className="form-control"
+        placeholder={field.placeholder}
+        required
+      />
+    </div>
+  );
+};
+
+const SelectorComponent = () => {
+  return (
+    <>
       <div className="form-group">
         <label htmlFor="gender">Gender</label>
         <select name="gender" id="gender" className="form-control" required>
@@ -117,74 +104,95 @@ const PersonalDetails = () => (
           <option value="female">Female</option>
         </select>
       </div>
-      <div className="form-group">
-        <label htmlFor="age">Age</label>
-        <input
-          type="age"
-          name="age"
-          id="age"
-          className="form-control"
-          placeholder={19}
-          required
-        />
+    </>
+  );
+};
+const section = {
+  title: "Personal Details",
+};
+
+const PersonalDetails = () => {
+  const nameField = {
+    firstName: {
+      text: "First Name:",
+      name: "firstName",
+      placeholder: "Joseph",
+    },
+    lastName: {
+      text: "Last Name:",
+      name: "lastName",
+      placeholder: "Smith",
+    },
+  };
+  const personalField = [
+    {
+      text: "Age:",
+      name: "age",
+      placeholder: "19",
+    },
+    {
+      text: "Mobile Number:",
+      name: "mobNo",
+      placeholder: "10 digit number",
+    },
+    {
+      text: "LinkedIn Profile Link:",
+      name: "linkedIn",
+      placeholder: "https://www.linkedin.com/in/joseph-smith-213dn123",
+    },
+    {
+      text: "GitHub Profile Link:",
+      name: "gitHubLink",
+      placeholder: "https://github.com/JosephSmith",
+    },
+    {
+      text: "NMIMS Email ID:",
+      name: "email",
+      placeholder: "joseph.smith26@nmims.edu.in",
+    },
+    {
+      text: "Permanent Address:",
+      name: "address",
+      placeholder:
+        "Flat 1302, Amrit Apartments, Sector 12, Kharghar, Maharashtra",
+    },
+    {
+      text: "Spoken Languages:",
+      name: "spokenLang",
+      placeholder: "English, Hindi, Gujarati etc.",
+    },
+    // {
+    //   text: "",
+    //   name: "",
+    //   placeholder: "",
+    // },
+  ];
+
+  return (
+    <>
+      <h2> PERSONAL DETAILS </h2>
+      <br />
+      <div className="row">
+        <div className="col">
+          <InputComponent field={nameField.firstName} />
+        </div>
+        <div className="col">
+          <InputComponent field={nameField.lastName} />
+        </div>
       </div>
+
       <div className="form-group">
-        <label htmlFor="mobileno">Mobile Number</label>
-        <input
-          type="mobileno"
-          name="mobileno"
-          id="mobileno"
-          className="form-control"
-          placeholder={9998887770}
-          required
-        />
+        <label htmlFor="gender">Gender</label>
+        <select name="gender" id="gender" className="form-control" required>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
       </div>
-      <div className="form-group">
-        <label htmlFor="linkedin">LinkedIn</label>
-        <input
-          type="text"
-          name="linkedin"
-          id="linkedin"
-          className="form-control"
-          required
-        />
-      </div>
-      <div className="form-group">
-        <label htmlFor="github">Github Link</label>
-        <input type="text" name="github" id="github" className="form-control" />
-      </div>
-      <div className="form-group">
-        <label htmlFor="email">Student's Email Id</label>
-        <input
-          type="email"
-          name="email"
-          id="email"
-          className="form-control"
-          placeholder="joseph.morgan26@nmims.edu.in"
-          required
-        />
-      </div>
-      <div className="form-group">
-        <label htmlFor="add">Permanent Address</label>
-        <input
-          type="add"
-          name="add"
-          id="add"
-          className="form-control"
-          required
-        />
-      </div>
-      <div className="form-group">
-        <label htmlFor="slang">Spoken Languages</label>
-        <input
-          type="slang"
-          name="slang"
-          id="slang"
-          className="form-control"
-          placeholder="English,Hindi,Gujarati etc."
-          required
-        />
-      </div>
+
+      {personalField.map((dataField, index) => (
+        <InputComponent key={index} field={dataField} />
+      ))}
+
       <div className="form-group">
         <label htmlFor="fileToUpload">Upload Your Profile Picture</label>
         <input
@@ -195,27 +203,38 @@ const PersonalDetails = () => (
           required
         />
       </div>
-    </div>
-    <br />
-  </>
-);
+      <br />
+    </>
+  );
+};
 
-const Academics = () => (
-  <>
-    <div>
+const Academics = () => {
+  const acadField = [
+    {
+      text: "Course - Duration:",
+      name: "courseDur",
+      placeholder: "May 2019 - May 2024",
+    },
+    {
+      text: "CGPA:",
+      name: "cgpa",
+      placeholder: "3.11",
+    },
+    {
+      text: "10th Percentage",
+      name: "percent10",
+      placeholder: "95.6",
+    },
+    {
+      text: "12th Percentage",
+      name: "percent12",
+      placeholder: "85.2",
+    },
+  ];
+  return (
+    <>
       <h2>ACADEMICS</h2>
       <br />
-      <div className="form-group">
-        <label htmlFor="course_dur">Course - Duration </label>
-        <input
-          type="course_dur"
-          name="course_dur"
-          id="course_dur"
-          className="form-control"
-          placeholder="Eg. May 2019 - May 2024"
-          required
-        />
-      </div>
       <div className="form-group">
         <label htmlFor="course">Course</label>
         <select name="course" id="course" className="form-control" required>
@@ -223,114 +242,84 @@ const Academics = () => (
           <option value="btech">BTech (CSBS) </option>
         </select>
       </div>
-      <div className="form-group">
-        <label htmlFor="course">Course </label>
-        <input
-          type="course"
-          name="course"
-          id="course"
-          className="form-control"
-          required
-        />
-      </div>
-      <div className="form-group">
-        <label htmlFor="branch">Branch </label>
-        <input
-          type="branch"
-          name="branch"
-          id="branch"
-          className="form-control"
-          required
-        />
-      </div>
-      <div className="form-group">
-        <label htmlFor="gpa">GPA</label>
-        <input
-          type="gpa"
-          name="gpa"
-          id="gpa"
-          className="form-control"
-          placeholder="Out of 4"
-          required
-        />
-      </div>
-      <div className="form-group">
-        <label htmlFor="per10">10th Percentage</label>
-        <input
-          type="per10"
-          name="per10"
-          id="per10"
-          className="form-control"
-          placeholder="95.6"
-          required
-        />
-      </div>
-      <div className="form-group">
-        <label htmlFor="per12">12th Percentage</label>
-        <input
-          type="per12"
-          name="per12"
-          id="per12"
-          className="form-control"
-          placeholder={94}
-          required
-        />
-      </div>
-    </div>
+      {acadField.map((dataField, index) => (
+        <InputComponent key={index} field={dataField} />
+      ))}
+      <br />
+    </>
+  );
+};
 
-    <br />
-  </>
-);
+const Skills = () => {
+  const skillField = [
+    {
+      text: "Programming Languages:",
+      name: "lang",
+      placeholder: "C++, Python, Java, JavaScript, PHP etc.",
+    },
+    {
+      text: "Tools & Technologies: ",
+      name: "tools",
+      placeholder: "MERN, MongoDB, Web Development etc.",
+    },
+    {
+      text: "Core Skills:",
+      name: "core",
+      placeholder: "Communication, Leadership, Conflict Resolution etc.",
+    },
+  ];
+  return (
+    <>
+      <h2>SKILLS</h2>
+      <br />
+      {skillField.map((dataField, index) => (
+        <InputComponent key={index} field={dataField} />
+      ))}
+    </>
+  );
+};
 
-const Extracurricular = () => (
-  <>
-    <div>
+const Extracurricular = () => {
+  const extraField = [
+    {
+      text: "Hobbies:",
+      name: "hobbies",
+      placeholder: "Cycling, Dancing etc.",
+    },
+    {
+      text: "Certificates & Courses (Kindly add complete name of your certifications):",
+      name: "certiCourse",
+      placeholder:
+        "Flutter Development (Coursera), Data Science (Kaggle), etc.",
+    },
+  ];
+  return (
+    <>
       <h2>EXTRACURRICULAR</h2>
       <br />
-      <div className="form-group">
-        <label htmlFor="hobbies">Hobbies:</label>
-        <input
-          type="hobbies"
-          name="hobbies"
-          id="hobbies"
-          placeholder="Cycling,Dancing etc"
-          className="form-control"
-        />
-      </div>
-      <div className="form-group">
-        <label htmlFor="cc">
-          Certificates &amp; Courses (Kindly add complete name of your
-          certifications.):
-        </label>
-        <input
-          type="cc"
-          name="cc"
-          id="cc"
-          placeholder="Flutter Development (Coursera) , Data Science (Kaggle) "
-          className="form-control"
-        />
-      </div>
-    </div>
-
-    <br />
-  </>
-);
+      {extraField.map((dataField, index) => (
+        <InputComponent key={index} field={dataField} />
+      ))}
+      <br />
+    </>
+  );
+};
 
 const Internship = () => (
   <>
-    <div>
-      <h2>INTERNSHIPS</h2>
-      <div className="form-group internship-section" id="we">
-        <div className="intern_data"></div>
-        <div className="container text-centre" id="weaddbutton">
-          <br /> <br />
-          <button onclick="addNewIntern()" className="btn btn-dark btn-sm">
-            Add Internship
-          </button>
-        </div>
+    <h2>INTERNSHIPS</h2>
+    <div className="form-group internship-section" id="we">
+      <div className="intern_data"></div>
+      <div className="container text-centre" id="weaddbutton">
+        <br /> <br />
+        <button
+          // onClick="addNewIntern()"
+          className="btn btn-dark btn-sm"
+        >
+          Add Internship
+        </button>
       </div>
     </div>
-
     <br />
   </>
 );
@@ -343,7 +332,10 @@ const Project = () => (
         <div className="project_data"></div>
         <div className="container text-centre" id="prbutton">
           <br /> <br />
-          <button onclick="addNewProject()" className="btn btn-dark btn-sm">
+          <button
+            // onClick="addNewProject()"
+            className="btn btn-dark btn-sm"
+          >
             Add Project
           </button>
         </div>
@@ -361,7 +353,10 @@ const Leadership = () => (
         <div className="leadership_data"></div>
         <div className="container text-centre" id="lebutton">
           <br /> <br />
-          <button onclick="addNewLeadership()" className="btn btn-dark btn-sm">
+          <button
+            // onClick="addNewLeadership()"
+            className="btn btn-dark btn-sm"
+          >
             Add New Leadership Role
           </button>
         </div>
