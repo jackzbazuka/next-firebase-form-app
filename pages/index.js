@@ -65,6 +65,7 @@ const SampleForm = () => (
     </div>
   </>
 );
+
 const NavBar = () => (
   <>
     <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
@@ -78,129 +79,122 @@ const NavBar = () => (
 
 const PersonalDetails = () => (
   <>
-    <h2> PERSONAL DETAILS </h2>
-    <br />
-    <div className="row">
-      <div className="col">
-        <div className="form-group">
-          <label htmlFor="firstname">Firstname</label>
-          <input
-            type="text"
-            name="firstname"
-            id="firstname"
-            className="form-control"
-            required
-          />
+    <div>
+      <h2> PERSONAL DETAILS </h2>
+      <br />
+      <div className="row">
+        <div className="col">
+          <div className="form-group">
+            <label htmlFor="firstname">Firstname</label>
+            <input
+              type="text"
+              name="firstname"
+              id="firstname"
+              className="form-control"
+              placeholder="Joseph"
+              required
+            />
+          </div>
+        </div>
+        <div className="col">
+          <div className="form-group">
+            <label htmlFor="lastname">Lastname</label>
+            <input
+              type="text"
+              name="lastname"
+              id="lastname"
+              className="form-control"
+              placeholder="Morgan"
+              required
+            />
+          </div>
         </div>
       </div>
-      <div className="col">
-        <div className="form-group">
-          <label htmlFor="lastname">Lastname</label>
-          <input
-            type="text"
-            name="lastname"
-            id="lastname"
-            className="form-control"
-            required
-          />
-        </div>
+      <div className="form-group">
+        <label htmlFor="gender">Gender</label>
+        <select name="gender" id="gender" className="form-control" required>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
       </div>
-    </div>
-    <div className="form-group">
-      <label htmlFor="gender">Gender</label>
-      <select name="gender" id="gender" className="form-control" required>
-        <option value="male">Male</option>
-        <option value="female">Female</option>
-      </select>
-    </div>
-    <div className="form-group">
-      <label htmlFor="dob">Date Of Birth</label>
-      <input
-        type="dob"
-        name="dob"
-        id="dob"
-        className="form-control"
-        placeholder="DD/MM/YYYY"
-        required
-      />
-    </div>
-    <div className="form-group">
-      <label htmlFor="mobileno">Mobile Number</label>
-      <input
-        type="mobileno"
-        name="mobileno"
-        id="mobileno"
-        className="form-control"
-        required
-      />
-    </div>
-    <div className="form-group">
-      <label htmlFor="linkedin">LinkedIn</label>
-      <input
-        type="text"
-        name="linkedin"
-        id="linkedin"
-        className="form-control"
-        required
-      />
-    </div>
-    <div className="form-group">
-      <label htmlFor="github">Github Link</label>
-      <input type="text" name="github" id="github" className="form-control" />
-    </div>
-    <div className="form-group">
-      <label htmlFor="email">Student's Email Id</label>
-      <input
-        type="email"
-        name="email"
-        id="email"
-        className="form-control"
-        required
-      />
-    </div>
-    <div className="form-group">
-      <label htmlFor="add">Permanent Address</label>
-      <input type="add" name="add" id="add" className="form-control" required />
-    </div>
-    <div className="form-group">
-      <label htmlFor="slang">Spoken Languages</label>
-      <input
-        type="slang"
-        name="slang"
-        id="slang"
-        className="form-control"
-        required
-      />
-    </div>
-    <div className="form-group">
-      <label htmlFor="per10">10th Percentage</label>
-      <input
-        type="per10"
-        name="per10"
-        id="per10"
-        className="form-control"
-        required
-      />
-    </div>
-    <div className="form-group">
-      <label htmlFor="per12">12th Percentage</label>
-      <input
-        type="per12"
-        name="per12"
-        id="per12"
-        className="form-control"
-        required
-      />
-    </div>
-    <div className="form-group">
-      <label htmlFor="fileToUpload">Upload Your Profile Picture</label>
-      <input
-        type="file"
-        name="fileToUpload"
-        id="fileToUpload"
-        className="form-control"
-        required
-      />
+      <div className="form-group">
+        <label htmlFor="age">Age</label>
+        <input
+          type="age"
+          name="age"
+          id="age"
+          className="form-control"
+          placeholder={19}
+          required
+        />
+      </div>
+      <div className="form-group">
+        <label htmlFor="mobileno">Mobile Number</label>
+        <input
+          type="mobileno"
+          name="mobileno"
+          id="mobileno"
+          className="form-control"
+          placeholder={9998887770}
+          required
+        />
+      </div>
+      <div className="form-group">
+        <label htmlFor="linkedin">LinkedIn</label>
+        <input
+          type="text"
+          name="linkedin"
+          id="linkedin"
+          className="form-control"
+          required
+        />
+      </div>
+      <div className="form-group">
+        <label htmlFor="github">Github Link</label>
+        <input type="text" name="github" id="github" className="form-control" />
+      </div>
+      <div className="form-group">
+        <label htmlFor="email">Student's Email Id</label>
+        <input
+          type="email"
+          name="email"
+          id="email"
+          className="form-control"
+          placeholder="joseph.morgan26@nmims.edu.in"
+          required
+        />
+      </div>
+      <div className="form-group">
+        <label htmlFor="add">Permanent Address</label>
+        <input
+          type="add"
+          name="add"
+          id="add"
+          className="form-control"
+          required
+        />
+      </div>
+      <div className="form-group">
+        <label htmlFor="slang">Spoken Languages</label>
+        <input
+          type="slang"
+          name="slang"
+          id="slang"
+          className="form-control"
+          placeholder="English,Hindi,Gujarati etc."
+          required
+        />
+      </div>
+      <div className="form-group">
+        <label htmlFor="fileToUpload">Upload Your Profile Picture</label>
+        <input
+          type="file"
+          name="fileToUpload"
+          id="fileToUpload"
+          className="form-control"
+          required
+        />
+      </div>
     </div>
     <br />
   </>
@@ -208,127 +202,171 @@ const PersonalDetails = () => (
 
 const Academics = () => (
   <>
-    <h2>ACADEMICS</h2>
-    <br />
-    <div className="form-group">
-      <label htmlFor="course_dur">Course - Duration </label>
-      <input
-        type="course_dur"
-        name="course_dur"
-        id="course_dur"
-        className="form-control"
-        required
-      />
+    <div>
+      <h2>ACADEMICS</h2>
+      <br />
+      <div className="form-group">
+        <label htmlFor="course_dur">Course - Duration </label>
+        <input
+          type="course_dur"
+          name="course_dur"
+          id="course_dur"
+          className="form-control"
+          placeholder="Eg. May 2019 - May 2024"
+          required
+        />
+      </div>
+      <div className="form-group">
+        <label htmlFor="course">Course</label>
+        <select name="course" id="course" className="form-control" required>
+          <option value="mbatech">MBA Tech (CS) </option>
+          <option value="btech">BTech (CSBS) </option>
+        </select>
+      </div>
+      <div className="form-group">
+        <label htmlFor="course">Course </label>
+        <input
+          type="course"
+          name="course"
+          id="course"
+          className="form-control"
+          required
+        />
+      </div>
+      <div className="form-group">
+        <label htmlFor="branch">Branch </label>
+        <input
+          type="branch"
+          name="branch"
+          id="branch"
+          className="form-control"
+          required
+        />
+      </div>
+      <div className="form-group">
+        <label htmlFor="gpa">GPA</label>
+        <input
+          type="gpa"
+          name="gpa"
+          id="gpa"
+          className="form-control"
+          placeholder="Out of 4"
+          required
+        />
+      </div>
+      <div className="form-group">
+        <label htmlFor="per10">10th Percentage</label>
+        <input
+          type="per10"
+          name="per10"
+          id="per10"
+          className="form-control"
+          placeholder="95.6"
+          required
+        />
+      </div>
+      <div className="form-group">
+        <label htmlFor="per12">12th Percentage</label>
+        <input
+          type="per12"
+          name="per12"
+          id="per12"
+          className="form-control"
+          placeholder={94}
+          required
+        />
+      </div>
     </div>
-    <div className="form-group">
-      <label htmlFor="course">Course </label>
-      <input
-        type="course"
-        name="course"
-        id="course"
-        className="form-control"
-        required
-      />
-    </div>
-    <div className="form-group">
-      <label htmlFor="branch">Branch </label>
-      <input
-        type="branch"
-        name="branch"
-        id="branch"
-        className="form-control"
-        required
-      />
-    </div>
-    <div className="form-group">
-      <label htmlFor="gpa">GPA</label>
-      <input type="gpa" name="gpa" id="gpa" className="form-control" required />
-    </div>
-  </>
-);
 
-const Skills = () => (
-  <>
-    <h2>SKILLS</h2>
-    <br />
-    <div className="form-group">
-      <label htmlFor="languages">Languages:</label>
-      <input
-        type="languages"
-        name="languages"
-        id="languages"
-        className="form-control"
-        required
-      />
-    </div>
-    <div className="form-group">
-      <label htmlFor="tt">Tools &amp; Technologies:</label>
-      <input type="tt" name="tt" id="tt" className="form-control" required />
-    </div>
-    <div className="form-group">
-      <label htmlFor="core">Core Skills:</label>
-      <input
-        type="core"
-        name="core"
-        id="core"
-        className="form-control"
-        required
-      />
-    </div>
     <br />
   </>
 );
 
 const Extracurricular = () => (
   <>
-    <h2>EXTRACURRICULAR</h2>
-    <br />
-    <div className="form-group">
-      <label htmlFor="hobbies">Hobbies:</label>
-      <input
-        type="hobbies"
-        name="hobbies"
-        id="hobbies"
-        className="form-control"
-      />
+    <div>
+      <h2>EXTRACURRICULAR</h2>
+      <br />
+      <div className="form-group">
+        <label htmlFor="hobbies">Hobbies:</label>
+        <input
+          type="hobbies"
+          name="hobbies"
+          id="hobbies"
+          placeholder="Cycling,Dancing etc"
+          className="form-control"
+        />
+      </div>
+      <div className="form-group">
+        <label htmlFor="cc">
+          Certificates &amp; Courses (Kindly add complete name of your
+          certifications.):
+        </label>
+        <input
+          type="cc"
+          name="cc"
+          id="cc"
+          placeholder="Flutter Development (Coursera) , Data Science (Kaggle) "
+          className="form-control"
+        />
+      </div>
     </div>
-    <div className="form-group">
-      <label htmlFor="cc">Certificates &amp; Courses:</label>
-      <input type="cc" name="cc" id="cc" className="form-control" />
-    </div>
+
     <br />
   </>
 );
 
 const Internship = () => (
   <>
-    <h2>INTERNSHIPS</h2>
-    <div className="form-group internship-section" id="we">
-      <div className="intern_data" />
-      <div className="container text-centre" id="weaddbutton">
-        <br />
-        <button onclick="addNewIntern()" className="btn btn-dark btn-sm">
-          Add Internship
-        </button>
+    <div>
+      <h2>INTERNSHIPS</h2>
+      <div className="form-group internship-section" id="we">
+        <div className="intern_data"></div>
+        <div className="container text-centre" id="weaddbutton">
+          <br /> <br />
+          <button onclick="addNewIntern()" className="btn btn-dark btn-sm">
+            Add Internship
+          </button>
+        </div>
       </div>
     </div>
+
     <br />
   </>
 );
 
 const Project = () => (
   <>
-    <h2>PROJECTS</h2>
-    <div className="form-group project-section" id="pr">
-      <div className="project_data" />
-      <div className="container text-centre" id="prbutton">
-        <br />
-        <button onclick="addNewProject()" className="btn btn-dark btn-sm">
-          Add Project
-        </button>
+    <div>
+      <h2>PROJECTS</h2>
+      <div className="form-group project-section" id="pr">
+        <div className="project_data"></div>
+        <div className="container text-centre" id="prbutton">
+          <br /> <br />
+          <button onclick="addNewProject()" className="btn btn-dark btn-sm">
+            Add Project
+          </button>
+        </div>
+      </div>
+      <br />
+    </div>
+  </>
+);
+
+const Leadership = () => (
+  <>
+    <div>
+      <h2>LEADERSHIP</h2>
+      <div className="form-group project-section" id="le">
+        <div className="leadership_data"></div>
+        <div className="container text-centre" id="lebutton">
+          <br /> <br />
+          <button onclick="addNewLeadership()" className="btn btn-dark btn-sm">
+            Add New Leadership Role
+          </button>
+        </div>
       </div>
     </div>
-    <br />
   </>
 );
 
@@ -343,21 +381,6 @@ const Footer = () => (
       .
     </p>
   </footer>
-);
-
-const Leadership = () => (
-  <>
-    <h2>LEADERSHIP</h2>
-    <div className="form-group project-section" id="le">
-      <div className="leadership_data" />
-      <div className="container text-centre" id="lebutton">
-        <br />
-        <button onclick="addNewLeadership()" className="btn btn-dark btn-sm">
-          Add New Leadership Role
-        </button>
-      </div>
-    </div>
-  </>
 );
 
 export default function Form() {

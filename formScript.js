@@ -18,7 +18,7 @@ const addNewIntern = () => {
   input1.setAttribute("size", "82");
 
   let input2 = document.createElement("input");
-  input2.placeholder = "Work Duration";
+  input2.placeholder = "Work Duration: Eg:- May 2021 - July 2021 ";
   input2.setAttribute("size", "82");
 
   // Description list node creation
@@ -26,18 +26,18 @@ const addNewIntern = () => {
   description.classList.add("internship_desc");
 
   let internShipDesc = document.createElement("textarea");
-  internShipDesc.placeholder = "Internship Description";
+  internShipDesc.placeholder = "Role Description";
   internShipDesc.name = "internship_desc_0";
   internShipDesc.rows = "3";
   internShipDesc.cols = "85";
   description.appendChild(internShipDesc);
 
   /* let addDescButton = document.createElement("button");
-      addDescButton.innerText = "New Description Line";
-      addDescButton.onclick = addNewDescription;
-      addDescButton.classList.add("btn", "btn-primary", "btn-sm");
-    
-      description.appendChild(addDescButton); */
+  addDescButton.innerText = "New Description Line";
+  addDescButton.onclick = addNewDescription;
+  addDescButton.classList.add("btn", "btn-primary", "btn-sm");
+
+  description.appendChild(addDescButton); */
 
   // Appending all nodes to intern_data class/node
   internData.appendChild(document.createElement("br"));
@@ -87,7 +87,7 @@ const addNewProject = () => {
   input1.setAttribute("size", "82");
 
   let input2 = document.createElement("input");
-  input2.placeholder = "Date of Completion";
+  input2.placeholder = "Date of Completion: Eg:- May 2021 - July 2021";
   input2.setAttribute("size", "82");
 
   // Description list node creation
@@ -102,11 +102,11 @@ const addNewProject = () => {
   description.appendChild(projectDesc);
 
   /* let addDescButton = document.createElement("button");
-      addDescButton.innerText = "New Description Line";
-      addDescButton.onclick = addNewDescription;
-      addDescButton.classList.add("btn", "btn-primary", "btn-sm");
-    
-      description.appendChild(addDescButton); */
+  addDescButton.innerText = "New Description Line";
+  addDescButton.onclick = addNewDescription;
+  addDescButton.classList.add("btn", "btn-primary", "btn-sm");
+
+  description.appendChild(addDescButton); */
 
   // Appending all nodes to intern_data class/node
   projectData.appendChild(document.createElement("br"));
@@ -156,7 +156,7 @@ const addNewLeadership = () => {
   input1.setAttribute("size", "82");
 
   let input2 = document.createElement("input");
-  input2.placeholder = "Duration";
+  input2.placeholder = "Duration: Eg:- May 2021 - July 2021";
   input2.setAttribute("size", "82");
 
   // Description list node creation
@@ -171,11 +171,11 @@ const addNewLeadership = () => {
   description.appendChild(leadershipDesc);
 
   /* let addDescButton = document.createElement("button");
-      addDescButton.innerText = "New Description Line";
-      addDescButton.onclick = addNewDescription;
-      addDescButton.classList.add("btn", "btn-primary", "btn-sm");
-    
-      description.appendChild(addDescButton); */
+  addDescButton.innerText = "New Description Line";
+  addDescButton.onclick = addNewDescription;
+  addDescButton.classList.add("btn", "btn-primary", "btn-sm");
+
+  description.appendChild(addDescButton); */
 
   // Appending all nodes to intern_data class/node
   leadershipData.appendChild(document.createElement("br"));
