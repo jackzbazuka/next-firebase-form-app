@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "@/context/*": [
+                "context/*"
+            ],
+            "@/fetchData/*": [
+                "fetch-data/*"
+            ],
+			"@/firebase/*": [
+                "firebase/*"
+            ],
+        }
+    },
+    "exclude": [
+        "node_modules",
+    ]
+}
