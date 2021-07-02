@@ -71,7 +71,7 @@ export default function Form() {
 
 	return (
 		<div className="m-1 p-1 grid place-items-center">
-			<h1 className="mx-auto mt-5 mb-1 p-1 text-xl">STME Resume Form</h1>
+			<h1 className="mx-auto mt-5 mb-1 p-1 select-none text-xl">STME Resume Form</h1>
 			<form
 				className="mx-auto mt-1 mb-10 p-3 w-8/12 flex flex-col justify-around place-items-center"
 				onSubmitCapture={handleSubmit}
