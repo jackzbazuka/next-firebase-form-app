@@ -1,8 +1,8 @@
-import NextLink from "next/link";
-import NextHead from "next/head";
-import UserProvider from "@/context/userContext";
-import "tailwindcss/tailwind.css";
-import "../styles.css";
+import NextLink from "next/link"
+import NextHead from "next/head"
+import UserProvider from "@/context/userContext"
+import "tailwindcss/tailwind.css"
+import "../styles.css"
 
 export default function App({ Component, pageProps }) {
 
@@ -22,12 +22,12 @@ export default function App({ Component, pageProps }) {
 					<NextLink href="/">
 						<a className="mx-2 my-1 p-1">Home</a>
 					</NextLink>
-					<NextLink href="/data">
-						<a className="mx-2 my-1 p-1">Data</a>
+					<NextLink href="/form">
+						<a className="mx-2 my-1 p-1">Form</a>
 					</NextLink>
 				</nav>
 			</header>
 			<Component {...pageProps} />
 		</UserProvider>
-	);
+	)
 }

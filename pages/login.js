@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import NextLink from 'next/link'
 import firebase from '@/firebase/clientApp'
 
@@ -19,7 +19,7 @@ export default function Login() {
 				<input className='m-2 p-2 text-lg w-1/2 outline-none border' type='password' value={password} autoComplete='false' required placeholder='Password' onChange={e => setPassword(e.target.value)} />
 				<input className='m-2 p-2 text-lg text-white bg-blue-700 transition-all hover:bg-blue-800 cursor-pointer w-1/2 outline-none border' type='submit' value='Login' />
 			</form>
-			<NextLink href='/'><a className='m-1 p-1 transition-all hover:text-purple-700'>Don't have an account? Sign Up</a></NextLink>
+			<NextLink href='/signup'><a className='m-1 p-1 transition-all hover:text-purple-700'>Don't have an account? Sign Up</a></NextLink>
 		</div >
 	)
 }
