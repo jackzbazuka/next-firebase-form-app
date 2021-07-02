@@ -7,22 +7,16 @@ export default function DescGroup() {
 
 	return (
 		<>
-			{descCounter.map((desc, index) => (
+			{descCounter.map((desc, idx) => (
 				<input
-					key={index}
-					className="form-control"
+					type='text'
+					key={idx}
+					className='m-2 px-3 py-2 border-2 focus:border-blue-800 outline-none w-full'
 					name="desc_0"
-					placeholder="Description: Ex. Developed a responsive web-app "
-					style={{ marginTop: "8px" }}
+					placeholder='Description'
 				/>
 			))}
-			<button
-				style={{ marginTop: "8px", marginBottom: "8px" }}
-				onClick={addDescription}
-				className="btn btn-dark btn-sm"
-			>
-				Add Description
-			</button>
+			<button onClick={addDescription} className='m-1 p-2 w-1/4 rounded transition-all text-white bg-green-500 hover:bg-green-600'>Add Description</button>
 		</>
 	)
 }

@@ -4,44 +4,43 @@ import DescGroup from "@/components/DescGroup"
 
 export default function Project() {
 
-	const projectField = [
-		{
-			placeholder: "Project Name: Gesture Controlled Robot",
-			name: "projName",
-		},
-		{
-			placeholder: "Tools & Tech used: Arduino, Raspberry Pi",
-			name: "projTool",
-		},
-		{
-			placeholder: "Project Duration: May 2021 - July 2021",
-			name: "projDur",
-		},
-	]
-
-	const [projectCount, setProjectCount] = useState([0])
+	const [projectCount, setProjectCount] = useState([])
 
 	const addProject = () => setProjectCount([...projectCount, projectCount.length])
 
+	const projectField = [
+		{
+			placeholder: "Project Name",
+			name: "projName",
+		},
+		{
+			placeholder: "Tools & Tech used",
+			name: "projTool",
+		},
+		{
+			placeholder: "Project Duration",
+			name: "projDura",
+		},
+	]
+
 	return (
-		<>
-			<h2>PROJECTS</h2>
-			<div className="form-group">
-				<h1>Project Details:</h1>
-				<div className="intern_data">
-					{projectCount.map((project, index) => (
-						<div key={index}>
+		<div className='m-1 p-1 w-full'>
+
+			<h3 className='mx-auto my-5 p-3 select-none w-full text-center text-white bg-red-900'>Project</h3>
+
+			<div className='m-1 w-full flex flex-col justify-around place-items-center'>
+				<h4 className='m-1 p-1 flex-shrink-0'>Project Details</h4>
+				<div className='m-1 p-1 w-full'>
+					{projectCount.map((project, idx) => (
+						<div key={idx} className='flex flex-col place-items-center'>
+							<p className='m-1 p-1 text-xs italic'>(Incase of multiple description statements, use the button to add description)</p>
 							<DetailGroup detailField={projectField} />
 							<DescGroup />
-							<br />
 						</div>
 					))}
 				</div>
-				<button onClick={addProject} className="btn btn-dark btn-sm">
-					Add New Project
-				</button>
+				<button onClick={addProject} className='mx-auto my-5 p-2 w-1/4 rounded transition-all text-white bg-blue-600 hover:bg-blue-700'>Add Project</button>
 			</div>
-			<br />
-		</>
+		</div>
 	)
 }

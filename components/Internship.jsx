@@ -3,44 +3,44 @@ import DetailGroup from "@/components/DetailGroup"
 import DescGroup from "@/components/DescGroup"
 
 export default function Internship() {
-	const internField = [
-		{
-			placeholder: "Organization Name: TCS",
-			name: "internName",
-		},
-		{
-			placeholder: "Intern Role: FullStack Developer",
-			name: "internRole",
-		},
-		{
-			placeholder: "Work Duration: May 2021 - July 2021",
-			name: "internDur",
-		},
-	]
 
-	const [internCounter, setInternCounter] = useState([0])
+	const [internCounter, setInternCounter] = useState([])
 
 	const addInternship = () => setInternCounter([...internCounter, internCounter.length])
 
+	const internField = [
+		{
+			placeholder: "Organization Name",
+			name: "orgName",
+		},
+		{
+			placeholder: "Intern Role",
+			name: "internRole",
+		},
+		{
+			placeholder: "Work Duration",
+			name: "internDura",
+		},
+	]
+
 	return (
-		<>
-			<h2>INTERNSHIPS</h2>
-			<div className="form-group">
-				<h1>Internship Details:</h1>
-				<div className="intern_data">
-					{internCounter.map((internship, index) => (
-						<div key={index}>
+		<div className='m-1 p-1 w-full'>
+
+			<h3 className='mx-auto my-5 p-3 select-none w-full text-center text-white bg-red-900'>Internship</h3>
+
+			<div className='m-1 w-full flex flex-col justify-around place-items-center'>
+				<h4 className='m-1 p-1 flex-shrink-0'>Internship Details</h4>
+				<div className='m-1 p-1 w-full'>
+					{internCounter.map((internship, idx) => (
+						<div key={idx} className='flex flex-col place-items-center'>
+							<p className='m-1 p-1 text-xs italic'>(Incase of multiple description statements, use the button to add description)</p>
 							<DetailGroup detailField={internField} />
 							<DescGroup />
-							<br />
 						</div>
 					))}
 				</div>
-				<button onClick={addInternship} className="btn btn-dark btn-sm">
-					Add Internship
-				</button>
+				<button onClick={addInternship} className='mx-auto my-5 p-2 w-1/4 rounded transition-all text-white bg-blue-600 hover:bg-blue-700'>Add Internship</button>
 			</div>
-			<br />
-		</>
+		</div>
 	)
 }
