@@ -21,6 +21,7 @@ export default function App({ Component, pageProps }) {
 				<div className='mx-auto my-2 p-1 w-full flex flex-row justify-center divide-x'>
 					<p className='px-3 py-1 text-center'>Milind Sathe</p>
 					<p className='px-3 py-1 text-center'>Shivanshu Singh</p>
+					<p className='px-3 py-1 text-center'>Ritish Mohapatra</p>
 					<p className='px-3 py-1 text-center'>Darrsheni Sapovadia</p>
 					<p className='px-3 py-1 text-center'>Rupali Vastani</p>
 					<p className='px-3 py-1 text-center'>Rushali Vastani</p>

@@ -27,10 +27,10 @@ export default function Academics() {
 				<div className='flex flex-row justify-center place-items-center'>
 					<label className='m-2 p-1'>Graduation Year</label>
 					<select name='graduationYear' id='graduationYear' className='m-2 p-2 outline-none border' required>
-						<option value='2017'>2022</option>
-						<option value='2018'>2023</option>
-						<option value='2019'>2024</option>
-						<option value='2020'>2025</option>
+						<option value='2022'>2022</option>
+						<option value='2023'>2023</option>
+						<option value='2024'>2024</option>
+						<option value='2025'>2025</option>
 					</select>
 				</div>
 			</div>
