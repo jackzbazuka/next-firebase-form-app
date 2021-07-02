@@ -11,14 +11,14 @@ export default function App({ Component, pageProps }) {
 			</NextHead>
 			<header>
 				<nav className="px-2 py-5 w-full flex flex-row justify-center border bg-white">
-					<NextImage src="/logo.png" alt="Logo of NMIMS" width={100} height={10} />
+					<NextImage src="/logo.png" alt="Logo of NMIMS" width={100} height={10} quality={100} priority={true} />
 					<h1 className='mx-10 my-1 p-1 text-xl select-none'>NMIMS - School of Technology Management & Engineering</h1>
 				</nav>
 			</header>
 			<Component {...pageProps} />
-			<footer className='px-auto py-16 w-full grid place-items-center text-white bg-gray-900'>
-				<h4 className='m-1 p-1'>Made By</h4>
-				<div className='m-1 p-1 w-full flex flex-row justify-center divide-x'>
+			<footer className='px-auto py-16 w-full grid place-items-center select-none text-white bg-gray-900'>
+				<h4 className='mx-auto my-2 p-1'>Made by</h4>
+				<div className='mx-auto my-2 p-1 w-full flex flex-row justify-center divide-x'>
 					<p className='px-3 py-1 text-center'>Milind Sathe</p>
 					<p className='px-3 py-1 text-center'>Shivanshu Singh</p>
 					<p className='px-3 py-1 text-center'>Darrsheni Sapovadia</p>
