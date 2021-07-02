@@ -33,7 +33,7 @@ export default function Leadership() {
 				<div className='m-1 p-1 w-full'>
 					{leadCount.map((lead, index) => (
 						<div key={index} className='flex flex-col place-items-center'>
-							<p className='m-1 p-1 text-xs italic'>(Incase of multiple description statements, use the button to add description)</p>
+							<p className='m-1 p-1 text-xs select-none italic'>(Incase of multiple description statements, use the button to add description)</p>
 							<DetailGroup detailField={leadField} />
 							<DescGroup />
 						</div>

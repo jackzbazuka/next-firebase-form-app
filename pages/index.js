@@ -53,7 +53,7 @@ export default function Form() {
 				<Project />
 				<Leadership />
 				<div className='m-1 p-1 w-full border-t-2 flex flex-col justify-around place-items-center '>
-					<p className='m-1 p-1 text-xs italic'>(You've checked all the form values and are ready to submit the data)</p>
+					<p className='m-1 p-1 text-xs select-none italic'>(You've checked all the form values and are ready to submit the data)</p>
 					<button type='submit' className='mx-auto my-5 p-2 w-1/2 transition-all rounded-xl text-white bg-gray-700 hover:bg-gray-800'>Submit</button>
 				</div>
 			</form>

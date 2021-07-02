@@ -5,7 +5,7 @@ export default function Skills() {
 
 			<h3 className='mx-auto my-5 p-3 select-none w-full text-center text-white bg-red-900'>Skills</h3>
 
-			<p className='m-1 p-1 text-xs italic'>(Please input comma separated values in case of mulitple values)</p>
+			<p className='m-1 p-1 text-xs select-none italic'>(Please input comma separated values in case of mulitple values)</p>
 
 			<div className='m-1 w-full flex flex-row justify-around'>
 				<input type='text' name='programmingLanguage' id='programmingLanguage' className='m-2 px-3 py-2 border-2 focus:border-blue-800 outline-none w-full' placeholder='Programming Language' required />
