@@ -13,6 +13,7 @@ export default function App({ Component, pageProps }) {
 			<header>
 				<nav className='p-1 w-full flex flex-row justify-center border'>
 					<NextLink href='/'><a className='mx-2 my-1 p-1'>Home</a></NextLink>
+					<NextLink href='/form'><a className='mx-2 my-1 p-1'>Form</a></NextLink>
 					<NextLink href='/data'><a className='mx-2 my-1 p-1'>Data</a></NextLink>
 				</nav>
 			</header>

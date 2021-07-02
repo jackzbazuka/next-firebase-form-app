@@ -9,7 +9,7 @@ export default async function handler(req, res) {
 
 	if (method == 'POST') {
 
-		await db.collection('students').doc(body.name).set({
+		await db.collection(body.course).doc(body.name).set({
 			name: body.name,
 			mobile: body.mobile,
 			email: body.email,
