@@ -469,24 +469,37 @@ const Footer = () => (
 );
 
 export default function Form() {
-  // Image upload ref
-  const imageRef = useRef(null);
+	// Form states
+	const [name, setName] = useState("");
+	const [mobile, setMobile] = useState("");
+	const [email, setEmail] = useState("");
+	const [course, setCourse] = useState("Btech");
+	const [image, setImage] = useState(null);
 
-  // Sending data to backend for upload (except image for now)
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const imgUpload = storage
-      .ref(`images/${image.name}`)
-      .put(image)
-      .on("state_changed", null, (err) => console.log(err)); // upload to storage bucket using client SDK
+	// Image upload ref
+	const imageRef = useRef(null);
 
-    const res = await axios({
-      method: "POST",
-      url: "/api/firestore",
-      data: { name, mobile, email, course }, // need to upload image to storage bucket from backend, use admin SDK for that.
-    });
+	// Sending data to backend for upload (except image for now)
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+
+		const imgUpload = storage
+			.ref(`images/${image.name}`)
+			.put(image)
+			.on("state_changed", null, (err) => console.log(err)); // upload to storage bucket using client SDK
+
+		const res = await axios({
+			method: "POST",
+			url: "/api/firestore",
+			data: { name, mobile, email, course }, // need to upload image to storage bucket from backend, use admin SDK for that.
+		});
+
 
     if (res.status == 201) {
+      setName("");
+			setMobile("");
+			setEmail("");
+			setCourse("Btech");
       imageRef.current.value = null;
     }
   };
@@ -511,4 +524,5 @@ export default function Form() {
       <Footer />
     </>
   );
+
 }
