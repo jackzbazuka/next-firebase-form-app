@@ -114,7 +114,7 @@ export default function Form() {
 		})
 
 		if (res.status == 201) {
-			// router.reload()
+			router.reload()
 		}
 	}
 
@@ -137,7 +137,7 @@ export default function Form() {
 				<Leadership leadCount={leadCount} addLead={addLead} />
 				<div className="m-1 p-1 w-full border-t-2 flex flex-col justify-around place-items-center ">
 					<p className="m-1 p-1 text-xs select-none italic">(You've checked all the form values and are ready to submit the data)</p>
-					<button type="submit" className="mx-auto my-5 p-2 w-1/5 transition-all duration-500 lg:hover:rounded-3xl text-white bg-gray-700 lg:hover:bg-gray-800">
+					<button type="submit" className="mx-auto my-5 p-2 w-1/5 transition-all duration-500 text-white bg-gray-700 lg:hover:rounded-3xl lg:hover:bg-gray-800">
 						Submit
 					</button>
 				</div>
