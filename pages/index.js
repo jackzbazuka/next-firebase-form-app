@@ -28,7 +28,7 @@ export default function Form() {
 		console.log("Submitted")
 		// console.log(e.target.elements);
 		const data = new FormData(e.target)
-		console.log(data.getAll("desc"))
+		//console.log(data.getAll("desc"))
 
 		let leadershipArray = leadCount.map((leadership) => {
 			const leadershipData = {
