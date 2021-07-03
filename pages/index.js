@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
+import { useRouter } from 'next/router'
 import axios from "axios";
-import { storage } from "@/firebase/clientApp";
 
 import PersonalDetails from "@/components/PersonalDetails";
 import Academics from "@/components/Academics";
@@ -12,16 +12,17 @@ import Leadership from "@/components/Leadership";
 
 export default function Form() {
 	const [image, setImage] = useState(null);
-
+	const router = useRouter()
 	const imageRef = useRef(null);
 
 	const handleSubmit = async (e) => {
+
 		e.preventDefault();
 
 		// console.log(e.target.elements);
 		const data = new FormData(e.target);
 
-		let student = {
+		const student = {
 			// personal
 			firstName: data.get("firstName"),
 			lastName: data.get("lastName"),
@@ -46,17 +47,16 @@ export default function Form() {
 			// extracurricular
 			hobbies: data.get("hobbies"),
 			certNcourse: data.get("certNcourse"),
-			// internship
 		};
 
-		// console.log(student);
-		// const testImg = data.get("profilepicture");
-		// console.log(testImg);
-		// if (testImg)
-		//   storage
-		//     .ref(`images/${image.name}`)
-		//     .put(testImg)
-		//     .on("state_changed", null, (err) => console.log(err));
+		const sImg = data.get("profilepicture");
+
+		if (sImg) {
+			storage
+				.ref(`${student.course}-${student.graduationYear}/${sImg.name}`)
+				.put(sImg)
+				.on("state_changed", null, (err) => console.log(err));
+		}
 
 		const res = await axios({
 			method: "POST",
@@ -64,9 +64,9 @@ export default function Form() {
 			data: student,
 		});
 
-		// if (res.status == 201) {
-		//   imageRef.current.value = null;
-		// }
+		if (res.status == 201) {
+			router.reload()
+		}
 	};
 
 	return (
