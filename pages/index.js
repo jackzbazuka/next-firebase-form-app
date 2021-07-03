@@ -1,6 +1,7 @@
 import { useState, useRef } from "react"
-import { useRouter } from 'next/router'
+import { useRouter } from "next/router"
 import axios from "axios"
+import { storage } from "@/firebase/clientApp"
 
 import PersonalDetails from "@/components/PersonalDetails"
 import Academics from "@/components/Academics"
@@ -15,13 +16,50 @@ export default function Form() {
 	const router = useRouter()
 	const imageRef = useRef(null)
 
+	const [leadCount, setLeadCount] = useState([])
+	const [projectCount, setProjectCount] = useState([])
+	const [internCounter, setInternCounter] = useState([])
+	const addLead = () => setLeadCount([...leadCount, leadCount.length])
+	const addInternship = () => setInternCounter([...internCounter, internCounter.length])
+	const addProject = () => setProjectCount([...projectCount, projectCount.length])
+
 	const handleSubmit = async (e) => {
-
 		e.preventDefault()
-
+		console.log("Submitted")
 		// console.log(e.target.elements);
 		const data = new FormData(e.target)
+		console.log(data.getAll("desc"))
 
+		let leadershipArray = leadCount.map((leadership) => {
+			const leadershipData = {
+				leadName: data.get(`leadName${leadership}`),
+				leadRole: data.get(`leadRole${leadership}`),
+				leadDur: data.get(`leadDur${leadership}`),
+				leadDesc: data.getAll(`leadDesc${leadership}`),
+			}
+			// console.log(leadershipData)
+			return leadershipData
+		})
+		let internshipArray = internCounter.map((internship) => {
+			const internshipData = {
+				orgName: data.get(`orgName${internship}`),
+				internRole: data.get(`internRole${internship}`),
+				internDur: data.get(`internDura${internship}`),
+				internDesc: data.getAll(`internDesc${internship}`),
+			}
+			// console.log(internshipData)
+			return internshipData
+		})
+		let projectArray = projectCount.map((project) => {
+			const projectData = {
+				projName: data.get(`projName${project}`),
+				projTool: data.get(`projTool${project}`),
+				projDur: data.get(`projDura${project}`),
+				projDesc: data.getAll(`projDesc${project}`),
+			}
+			// console.log(projectData)
+			return projectData
+		})
 		const student = {
 			// personal
 			firstName: data.get("firstName"),
@@ -47,7 +85,13 @@ export default function Form() {
 			// extracurricular
 			hobbies: data.get("hobbies"),
 			certNcourse: data.get("certNcourse"),
+			// dynamic data arrays
+			internshipArray,
+			projectArray,
+			leadershipArray,
 		}
+
+		// console.log(internshipArray, projectArray, leadershipArray)
 
 		const sImg = data.get("profilepicture")
 
@@ -80,9 +124,9 @@ export default function Form() {
 				<Academics />
 				<Skills />
 				<Extracurricular />
-				<Internship />
-				<Project />
-				<Leadership />
+				<Internship internCounter={internCounter} addInternship={addInternship} />
+				<Project projectCount={projectCount} addProject={addProject} />
+				<Leadership leadCount={leadCount} addLead={addLead} />
 				<div className="m-1 p-1 w-full border-t-2 flex flex-col justify-around place-items-center ">
 					<p className="m-1 p-1 text-xs select-none italic">
 						(You've checked all the form values and are ready to submit the data)
