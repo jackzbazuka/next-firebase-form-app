@@ -1,4 +1,4 @@
-import { useState, useRef } from "react"
+import { useState } from "react"
 import { useRouter } from "next/router"
 import axios from "axios"
 import { storage } from "@/firebase/clientApp"
@@ -12,9 +12,8 @@ import Internship from "@/components/Internship"
 import Leadership from "@/components/Leadership"
 
 export default function Form() {
-	const [image, setImage] = useState(null)
+
 	const router = useRouter()
-	const imageRef = useRef(null)
 
 	const [leadCount, setLeadCount] = useState([])
 	const [projectCount, setProjectCount] = useState([])
@@ -114,12 +113,15 @@ export default function Form() {
 	}
 
 	return (
-		<div className="m-1 p-1 grid place-items-center">
-			<h1 className="mx-auto mt-5 mb-1 p-1 select-none text-xl">STME Resume Form</h1>
-			<form
-				className="mx-auto mt-1 mb-10 p-3 w-8/12 flex flex-col justify-around place-items-center"
-				onSubmitCapture={handleSubmit}
-			>
+		<div className='w-full grid place-items-center'>
+			<header className='w-full bg-gray-900 text-white'>
+				<nav className='w-full px-auto py-5 md:py-3 flex flex-row justify-center place-items-center border'>
+					<img className='p-1 mx-2 md:mx-5 my-1 h-14 md:h-12 bg-white' src='/logo.png' alt='Logo of NMIMS' />
+					<h1 className='p-1 mx-2 md:mx-5 my-1 text-xl select-none'>NMIMS - School of Technology Management & Engineering</h1>
+				</nav>
+			</header>
+			<h1 className="mx-auto mt-5 mb-1 p-1 select-none text-2xl md:text-xl">STME Resume Form</h1>
+			<form className="mx-auto mt-1 mb-10 p-3 w-11/12 md:w-8/12 flex flex-col justify-around place-items-center" onSubmitCapture={handleSubmit}>
 				<PersonalDetails />
 				<Academics />
 				<Skills />
@@ -128,17 +130,24 @@ export default function Form() {
 				<Project projectCount={projectCount} addProject={addProject} />
 				<Leadership leadCount={leadCount} addLead={addLead} />
 				<div className="m-1 p-1 w-full border-t-2 flex flex-col justify-around place-items-center ">
-					<p className="m-1 p-1 text-xs select-none italic">
-						(You've checked all the form values and are ready to submit the data)
-					</p>
-					<button
-						type="submit"
-						className="mx-auto my-5 p-2 w-1/2 transition-all rounded-xl text-white bg-gray-700 hover:bg-gray-800"
-					>
+					<p className="m-1 p-1 text-xs select-none italic">(You've checked all the form values and are ready to submit the data)</p>
+					<button type="submit" className="mx-auto my-5 p-2 w-1/2 transition-all rounded-xl text-white bg-gray-700 lg:hover:bg-gray-800">
 						Submit
 					</button>
 				</div>
 			</form>
+			<footer className='px-auto py-16 w-full grid place-items-center select-none text-white bg-gray-900'>
+				<h4 className='mx-auto my-2 p-1'>Made by</h4>
+				<div className='mx-auto my-2 p-1 w-full flex flex-row justify-center divide-x'>
+					<p className='px-3 py-1 text-center'>Milind Sathe</p>
+					<p className='px-3 py-1 text-center'>Shivanshu Singh</p>
+					<p className='px-3 py-1 text-center'>Ritish Mohapatra</p>
+					<p className='px-3 py-1 text-center'>Darrsheni Sapovadia</p>
+					<p className='px-3 py-1 text-center'>Rupali Vastani</p>
+					<p className='px-3 py-1 text-center'>Rushali Vastani</p>
+					<p className='px-3 py-1 text-center'>Manthan Tripathi</p>
+				</div>
+			</footer>
 		</div>
 	)
 }

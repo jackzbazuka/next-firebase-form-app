@@ -1,9 +1,9 @@
+import Section from '@/components/Section'
+
 export default function Extracurricular() {
 
 	return (
-		<div className='m-1 p-1 w-full'>
-
-			<h3 className='mx-auto my-5 p-3 select-none w-full text-center text-white bg-red-900'>Extracurricular</h3>
+		<Section name='Extracurricular'>
 
 			<p className='m-1 p-1 text-xs select-none italic'>(Please input comma separated values in case of mulitple values)</p>
 
@@ -15,7 +15,7 @@ export default function Extracurricular() {
 				<input type='text' name='certNcourse' id='certNcourse' className='m-2 px-3 py-2 border-2 focus:border-blue-800 outline-none w-full' placeholder='Certificates & Courses' required />
 			</div>
 
-		</div>
+		</Section>
 	)
 }
 

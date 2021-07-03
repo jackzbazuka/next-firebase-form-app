@@ -1,9 +1,9 @@
+import Section from '@/components/Section'
+
 export default function Skills() {
 
 	return (
-		<div className='m-1 p-1 w-full'>
-
-			<h3 className='mx-auto my-5 p-3 select-none w-full text-center text-white bg-red-900'>Skills</h3>
+		<Section name='Skills'>
 
 			<p className='m-1 p-1 text-xs select-none italic'>(Please input comma separated values in case of mulitple values)</p>
 
@@ -19,7 +19,7 @@ export default function Skills() {
 				<input type='text' name='coreSkills' id='coreSkills' className='m-2 px-3 py-2 border-2 focus:border-blue-800 outline-none w-full' placeholder='Core Skills' required />
 			</div>
 
-		</div>
+		</Section>
 	)
 }
 
@@ -39,4 +39,3 @@ export default function Skills() {
 // 		name: "core",
 // 		placeholder: "Communication, Leadership, Conflict Resolution etc.",
 // 	},
-// ]

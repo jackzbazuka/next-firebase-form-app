@@ -21,7 +21,7 @@ export default function DescGroup({ name, count }) {
 			<button
 				type="button"
 				onClick={addDescription}
-				className="m-1 p-2 w-1/4 rounded transition-all text-white bg-green-500 hover:bg-green-600"
+				className='m-1 p-2 w-1/4 rounded-xl transition-all border text-black bg-white lg:hover:text-white lg:hover:bg-purple-900'
 			>
 				Add Description
 			</button>

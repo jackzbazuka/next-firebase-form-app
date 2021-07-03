@@ -1,4 +1,4 @@
-import { useState } from "react"
+import Section from '@/components/Section'
 import DetailGroup from "@/components/DetailGroup"
 import DescGroup from "@/components/DescGroup"
 
@@ -19,11 +19,7 @@ export default function Internship({ internCounter, addInternship }) {
 	]
 
 	return (
-		<div className="m-1 p-1 w-full">
-			<h3 className="mx-auto my-5 p-3 select-none w-full text-center text-white bg-red-900">
-				Internship
-			</h3>
-
+		<Section name='Internship'>
 			<div className="m-1 w-full flex flex-col justify-around place-items-center">
 				<h4 className="m-1 p-1 flex-shrink-0">Internship Details</h4>
 				<div className="m-1 p-1 w-full">
@@ -38,14 +34,8 @@ export default function Internship({ internCounter, addInternship }) {
 						</div>
 					))}
 				</div>
-				<button
-					type="button"
-					onClick={addInternship}
-					className="mx-auto my-5 p-2 w-1/4 rounded transition-all text-white bg-blue-600 hover:bg-blue-700"
-				>
-					Add Internship
-				</button>
+				<button type="button" onClick={addInternship} className='m-1 p-2 w-1/4 rounded-xl transition-all border text-black bg-white lg:hover:text-white lg:hover:bg-purple-900'>Add Internship</button>
 			</div>
-		</div>
+		</Section>
 	)
 }

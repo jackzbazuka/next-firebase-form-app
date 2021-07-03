@@ -1,9 +1,11 @@
+import Section from '@/components/Section'
+
 export default function PersonalDetails() {
+
 	const ageArr = [17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
 
 	return (
-		<div className="m-1 p-1 w-full">
-			<h3 className="mx-auto my-5 p-3 select-none w-full text-center text-white bg-red-900">Personal Information</h3>
+		<Section name='Personal Information'>
 
 			<div className="m-1 w-full flex flex-row justify-around">
 				<input
@@ -98,7 +100,7 @@ export default function PersonalDetails() {
 					</select>
 				</div>
 			</div>
-		</div>
+		</Section>
 	)
 }
 

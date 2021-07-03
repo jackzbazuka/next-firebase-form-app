@@ -1,9 +1,9 @@
+import Section from '@/components/Section'
+
 export default function Academics() {
 
 	return (
-		<div className='m-1 p-1 w-full'>
-			<h3 className='mx-auto my-5 p-3 select-none w-full text-center text-white bg-red-900'>Academics</h3>
-
+		<Section name='Academics'>
 			<div className='m-1 w-full flex flex-row justify-around'>
 
 				<div className='flex flex-row justify-center place-items-center'>
@@ -40,8 +40,7 @@ export default function Academics() {
 				<input type='text' name='tenPercentile' id='tenPercentile' className='m-2 px-3 py-2 border-2 focus:border-blue-800 outline-none w-full' placeholder='10th Percentile' required />
 				<input type='text' name='twelvePercentile' id='twelvePercentile' className='m-2 px-3 py-2 border-2 focus:border-blue-800 outline-none w-full' placeholder='12th Percentile' required />
 			</div>
-
-		</div>
+		</Section>
 	)
 }
 
