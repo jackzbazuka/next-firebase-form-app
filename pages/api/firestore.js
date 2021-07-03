@@ -7,13 +7,15 @@ export default async function handler(req, res) {
 	const db = admin.firestore()
 
 	if (method == "POST") {
-		await db.collection(`${body.course}-${body.graduationYear}`).doc(body.firstName).set({
+		await db.collection(`${body.course}-${body.graduationYear}`).doc(body.sapId).set({
 			firstName: body.firstName,
 			lastName: body.lastName,
-			mobile: body.mobile,
-			linkedinurl: body.linkedinurl,
-			githuburl: body.githuburl,
+			sapId: body.sapId,
+			keywords: body.keywords,
 			email: body.email,
+			mobile: body.mobile,
+			linkedinUrl: body.linkedinUrl,
+			githubUrl: body.githubUrl,
 			address: body.address,
 			age: body.age,
 			gender: body.gender,
@@ -27,7 +29,7 @@ export default async function handler(req, res) {
 			toolsAndTechnologies: body.toolsAndTechnologies,
 			coreSkills: body.coreSkills,
 			hobbies: body.hobbies,
-			certNcourse: body.certNcourse,
+			certificationAndCourse: body.certificationAndCourse,
 			internship: body.internshipArray,
 			project: body.projectArray,
 			leadership: body.leadershipArray,

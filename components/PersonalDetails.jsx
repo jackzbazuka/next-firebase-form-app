@@ -7,12 +7,12 @@ export default function PersonalDetails() {
 	return (
 		<Section name='Personal Information'>
 
-			<div className="m-1 w-full flex flex-row justify-around">
+			<div className="mx-auto my-1 w-full flex flex-row justify-around">
 				<input
 					type="text"
 					name="firstName"
 					id="firstName"
-					className="m-2 px-3 py-2 border-2 focus:border-blue-800 outline-none w-full"
+					className="m-2 px-3 py-2 w-full rounded"
 					placeholder="First Name"
 					required
 				/>
@@ -20,18 +20,37 @@ export default function PersonalDetails() {
 					type="text"
 					name="lastName"
 					id="lastName"
-					className="m-2 px-3 py-2 border-2 focus:border-blue-800 outline-none w-full"
+					className="m-2 px-3 py-2 w-full rounded"
 					placeholder="Last Name"
 					required
 				/>
 			</div>
 
-			<div className="m-1 w-full flex flex-row justify-around">
+			<div className="mx-auto my-1 w-full flex flex-row justify-around">
+				<input
+					type="text"
+					name="sapId"
+					id="sapId"
+					className="m-2 px-3 py-2 w-full rounded"
+					placeholder="SAP ID"
+					required
+				/>
+				<input
+					type="text"
+					name="keywords"
+					id="keywords"
+					className="m-2 px-3 py-2 w-full rounded"
+					placeholder="Keywords"
+					required
+				/>
+			</div>
+
+			<div className="mx-auto my-1 w-full flex flex-row justify-around">
 				<input
 					type="text"
 					name="mobile"
 					id="mobile"
-					className="m-2 px-3 py-2 border-2 focus:border-blue-800 outline-none w-full"
+					className="m-2 px-3 py-2 w-full rounded"
 					placeholder="Mobile Number (10 digits)"
 					required
 				/>
@@ -39,52 +58,50 @@ export default function PersonalDetails() {
 					type="email"
 					name="email"
 					id="email"
-					className="m-2 px-3 py-2 border-2 focus:border-blue-800 outline-none w-full"
+					className="m-2 px-3 py-2 w-full rounded"
 					placeholder="Email ID"
 					required
 				/>
 			</div>
 
-			<div className="m-1 w-full flex flex-row justify-around">
+			<div className="mx-auto my-1 w-full flex flex-row justify-around">
 				<input
 					type="text"
-					name="githuburl"
-					id="githuburl"
-					className="m-2 px-3 py-2 border-2 focus:border-blue-800 outline-none w-full"
+					name="githubUrl"
+					id="githubUrl"
+					className="m-2 px-3 py-2 w-full rounded"
 					placeholder="Github Profile URL"
 					required
 				/>
 				<input
 					type="text"
-					name="linkedinurl"
-					id="linkedinurl"
-					className="m-2 px-3 py-2 border-2 focus:border-blue-800 outline-none w-full"
+					name="linkedinUrl"
+					id="linkedinUrl"
+					className="m-2 px-3 py-2 w-full rounded"
 					placeholder="Linkedin Profile URL"
 					required
 				/>
 			</div>
 
-			<div className="m-1 w-full flex flex-row justify-around">
+			<div className="mx-auto my-1 w-full flex flex-row justify-around">
 				<input
 					type="text"
 					name="address"
 					id="address"
-					className="m-2 px-3 py-2 border-2 focus:border-blue-800 outline-none w-full"
+					className="m-2 px-3 py-2 w-full rounded"
 					placeholder="Residential Address"
 					required
 				/>
 			</div>
 
-			<div className="m-1 w-full flex flex-row justify-around">
+			<div className="mx-auto my-1 w-full flex flex-row justify-around">
 				<div className="flex flex-row justify-center place-items-center">
-					<label className="m-2 p-1" htmlFor="fileToUpload">
-						Profile Picture
-					</label>
-					<input type="file" name="profilepicture" id="profilepicture" className="m-1 p-1 border" required />
+					<label className="mx-1 my-2 p-1" htmlFor="fileToUpload">Your Picture</label>
+					<input className="m-1 p-1 rounded" type="file" accept='image/*' name="profilePicture" id="profilePicture" required />
 				</div>
 				<div className="flex flex-row justify-center place-items-center">
-					<label className="m-2 p-1">Age</label>
-					<select name="age" id="age" className="m-2 p-2 outline-none border" required>
+					<label className="mx-1 my-2 p-1">Age</label>
+					<select name="age" id="age" className="m-2 rounded" required>
 						{ageArr.map((item) => (
 							<option key={item} value={`${item}`}>
 								{item}
@@ -93,8 +110,8 @@ export default function PersonalDetails() {
 					</select>
 				</div>
 				<div className="flex flex-row justify-center place-items-center">
-					<label className="m-2 p-1">Gender</label>
-					<select name="gender" id="gender" className="m-2 p-2 outline-none border" required>
+					<label className="mx-1 my-2 p-1">Gender</label>
+					<select name="gender" id="gender" className="m-2 rounded" required>
 						<option value="male">Male</option>
 						<option value="female">Female</option>
 					</select>
@@ -103,60 +120,3 @@ export default function PersonalDetails() {
 		</Section>
 	)
 }
-
-// const nameField = {
-// 	firstName: {
-// 		text: "First Name",
-// 		name: "firstName",
-// 		placeholder: "Joseph",
-// 	},
-// 	lastName: {
-// 		text: "Last Name",
-// 		name: "lastName",
-// 		placeholder: "Smith",
-// 	},
-// }
-
-// const personalField = [
-// 	{
-// 		text: "Age:",
-// 		name: "age",
-// 		placeholder: "19",
-// 	},
-// 	{
-// 		text: "Mobile Number:",
-// 		name: "mobNo",
-// 		placeholder: "10 digit number",
-// 	},
-// 	{
-// 		text: "LinkedIn Profile Link:",
-// 		name: "linkedIn",
-// 		placeholder: "https://www.linkedin.com/in/joseph-smith-213dn123",
-// 	},
-// 	{
-// 		text: "GitHub Profile Link:",
-// 		name: "gitHubLink",
-// 		placeholder: "https://github.com/JosephSmith",
-// 	},
-// 	{
-// 		text: "NMIMS Email ID:",
-// 		name: "email",
-// 		placeholder: "joseph.smith26@nmims.edu.in",
-// 	},
-// 	{
-// 		text: "Permanent Address:",
-// 		name: "address",
-// 		placeholder:
-// 			"Flat 1302, Amrit Apartments, Sector 12, Kharghar, Maharashtra",
-// 	},
-// 	{
-// 		text: "Spoken Languages:",
-// 		name: "spokenLang",
-// 		placeholder: "English, Hindi, Gujarati etc.",
-// 	},
-// 	// {
-// 	//   text: "",
-// 	//   name: "",
-// 	//   placeholder: "",
-// 	// },
-// ]

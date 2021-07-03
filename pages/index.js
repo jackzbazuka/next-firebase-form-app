@@ -18,6 +18,7 @@ export default function Form() {
 	const [leadCount, setLeadCount] = useState([])
 	const [projectCount, setProjectCount] = useState([])
 	const [internCounter, setInternCounter] = useState([])
+
 	const addLead = () => setLeadCount([...leadCount, leadCount.length])
 	const addInternship = () => setInternCounter([...internCounter, internCounter.length])
 	const addProject = () => setProjectCount([...projectCount, projectCount.length])
@@ -39,6 +40,7 @@ export default function Form() {
 			// console.log(leadershipData)
 			return leadershipData
 		})
+
 		let internshipArray = internCounter.map((internship) => {
 			const internshipData = {
 				orgName: data.get(`orgName${internship}`),
@@ -49,6 +51,7 @@ export default function Form() {
 			// console.log(internshipData)
 			return internshipData
 		})
+
 		let projectArray = projectCount.map((project) => {
 			const projectData = {
 				projName: data.get(`projName${project}`),
@@ -63,10 +66,12 @@ export default function Form() {
 			// personal
 			firstName: data.get("firstName"),
 			lastName: data.get("lastName"),
-			mobile: data.get("mobile"),
-			linkedinurl: data.get("linkedinurl"),
-			githuburl: data.get("githuburl"),
+			sapId: data.get("sapId"),
+			keywords: data.get("keywords"),
 			email: data.get("email"),
+			mobile: data.get("mobile"),
+			linkedinUrl: data.get("linkedinUrl"),
+			githubUrl: data.get("githubUrl"),
 			address: data.get("address"),
 			age: data.get("age"),
 			gender: data.get("gender"),
@@ -83,7 +88,7 @@ export default function Form() {
 			coreSkills: data.get("coreSkills"),
 			// extracurricular
 			hobbies: data.get("hobbies"),
-			certNcourse: data.get("certNcourse"),
+			certificationAndCourse: data.get("certificationAndCourse"),
 			// dynamic data arrays
 			internshipArray,
 			projectArray,
@@ -92,7 +97,7 @@ export default function Form() {
 
 		// console.log(internshipArray, projectArray, leadershipArray)
 
-		const sImg = data.get("profilepicture")
+		const sImg = data.get("profilePicture")
 
 		if (sImg) {
 			storage
@@ -114,13 +119,13 @@ export default function Form() {
 
 	return (
 		<div className='w-full grid place-items-center'>
-			<header className='w-full bg-gray-900 text-white'>
-				<nav className='w-full px-auto py-5 md:py-3 flex flex-row justify-center place-items-center border'>
+			<header className='px-auto w-full bg-gray-900 text-white'>
+				<nav className='w-full py-10 md:py-8 flex flex-row justify-center place-items-center'>
 					<img className='p-1 mx-2 md:mx-5 my-1 h-14 md:h-12 bg-white' src='/logo.png' alt='Logo of NMIMS' />
 					<h1 className='p-1 mx-2 md:mx-5 my-1 text-xl select-none'>NMIMS - School of Technology Management & Engineering</h1>
 				</nav>
 			</header>
-			<h1 className="mx-auto mt-5 mb-1 p-1 select-none text-2xl md:text-xl">STME Resume Form</h1>
+			<h1 className="mx-auto mt-10 mb-1 p-1 select-none text-2xl md:text-xl">STME Resume Form</h1>
 			<form className="mx-auto mt-1 mb-10 p-3 w-11/12 md:w-8/12 flex flex-col justify-around place-items-center" onSubmitCapture={handleSubmit}>
 				<PersonalDetails />
 				<Academics />
@@ -131,14 +136,14 @@ export default function Form() {
 				<Leadership leadCount={leadCount} addLead={addLead} />
 				<div className="m-1 p-1 w-full border-t-2 flex flex-col justify-around place-items-center ">
 					<p className="m-1 p-1 text-xs select-none italic">(You've checked all the form values and are ready to submit the data)</p>
-					<button type="submit" className="mx-auto my-5 p-2 w-1/2 transition-all rounded-xl text-white bg-gray-700 lg:hover:bg-gray-800">
+					<button type="submit" className="mx-auto my-5 p-2 w-1/5 transition-all duration-500 lg:hover:rounded-3xl text-white bg-gray-700 lg:hover:bg-gray-800">
 						Submit
 					</button>
 				</div>
 			</form>
 			<footer className='px-auto py-16 w-full grid place-items-center select-none text-white bg-gray-900'>
-				<h4 className='mx-auto my-2 p-1'>Made by</h4>
-				<div className='mx-auto my-2 p-1 w-full flex flex-row justify-center divide-x'>
+				<h4 className='mx-auto my-5 py-2 w-1/4 text-center border rounded border-purple-700'>MADE BY</h4>
+				<div className='mx-auto my-5 p-1 w-full flex flex-row justify-center divide-x'>
 					<p className='px-3 py-1 text-center'>Milind Sathe</p>
 					<p className='px-3 py-1 text-center'>Shivanshu Singh</p>
 					<p className='px-3 py-1 text-center'>Ritish Mohapatra</p>

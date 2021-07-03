@@ -12,7 +12,7 @@ export default function DescGroup({ name, count }) {
 					<input
 						type="text"
 						key={idx}
-						className="m-2 px-3 py-2 border-2 focus:border-blue-800 outline-none w-full"
+						className="m-2 px-3 py-2 w-full rounded"
 						name={nameField}
 						placeholder="Description"
 					/>
@@ -21,7 +21,7 @@ export default function DescGroup({ name, count }) {
 			<button
 				type="button"
 				onClick={addDescription}
-				className='m-1 p-2 w-1/4 rounded-xl transition-all border text-black bg-white lg:hover:text-white lg:hover:bg-purple-900'
+				className='m-1 p-2 w-1/6 rounded-xl transition-all duration-500 border text-black bg-white lg:hover:text-white lg:hover:bg-purple-900'
 			>
 				Add Description
 			</button>
