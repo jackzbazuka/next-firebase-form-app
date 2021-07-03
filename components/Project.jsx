@@ -31,7 +31,7 @@ export default function Project({ projectCount, addProject }) {
 						<div key={idx} className="flex flex-col place-items-center">
 							<h6 className='mx-auto my-1 h-8 w-8 select-none flex items-center justify-center rounded-full text-white bg-blue-900'>{idx + 1}</h6>
 							<DetailGroup detailField={projectField} count={project} />
-							<DatePicker />
+							<DatePicker field="projDura" count={project} />
 							<DescGroup name="projDesc" count={project} />
 						</div>
 					))}

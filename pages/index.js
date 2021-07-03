@@ -34,10 +34,10 @@ export default function Form() {
 			const leadershipData = {
 				leadName: data.get(`leadName${leadership}`),
 				leadRole: data.get(`leadRole${leadership}`),
-				leadDur: data.get(`leadDur${leadership}`),
+				leadDur: `${data.get(`leadDuraStart${leadership}`)} - ${data.get(`leadDuraEnd${leadership}`)}`,
 				leadDesc: data.getAll(`leadDesc${leadership}`),
 			}
-			// console.log(leadershipData)
+			// console.log('leadership data -->', leadershipData)
 			return leadershipData
 		})
 
@@ -45,10 +45,10 @@ export default function Form() {
 			const internshipData = {
 				orgName: data.get(`orgName${internship}`),
 				internRole: data.get(`internRole${internship}`),
-				internDur: data.get(`internDura${internship}`),
+				internDur: `${data.get(`internDuraStart${internship}`)} - ${data.get(`internDuraEnd${internship}`)}`,
 				internDesc: data.getAll(`internDesc${internship}`),
 			}
-			// console.log(internshipData)
+			// console.log('internship data -->', internshipData)
 			return internshipData
 		})
 
@@ -56,12 +56,13 @@ export default function Form() {
 			const projectData = {
 				projName: data.get(`projName${project}`),
 				projTool: data.get(`projTool${project}`),
-				projDur: data.get(`projDura${project}`),
+				projDur: `${data.get(`projDuraStart${project}`)} - ${data.get(`projDuraEnd${project}`)}`,
 				projDesc: data.getAll(`projDesc${project}`),
 			}
-			// console.log(projectData)
+			// console.log('project data -->', projectData)
 			return projectData
 		})
+
 		const student = {
 			// personal
 			firstName: data.get("firstName"),
@@ -113,7 +114,7 @@ export default function Form() {
 		})
 
 		if (res.status == 201) {
-			router.reload()
+			// router.reload()
 		}
 	}
 

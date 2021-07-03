@@ -4,6 +4,7 @@ import DescGroup from "@/components/DescGroup"
 import DatePicker from '@/components/DatePicker'
 
 export default function Internship({ internCounter, addInternship }) {
+
 	const internField = [
 		{
 			placeholder: "Organization Name",
@@ -31,7 +32,7 @@ export default function Internship({ internCounter, addInternship }) {
 						<div key={idx} className="flex flex-col place-items-center">
 							<h6 className='mx-auto my-1 h-8 w-8 select-none flex items-center justify-center rounded-full text-white bg-blue-900'>{idx + 1}</h6>
 							<DetailGroup detailField={internField} count={internship} />
-							<DatePicker />
+							<DatePicker field="internDura" count={internship} />
 							<DescGroup name="internDesc" count={internship} />
 						</div>
 					))}
