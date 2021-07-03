@@ -102,7 +102,7 @@ export default function Form() {
 
 		if (sImg) {
 			storage
-				.ref(`${student.course}-${student.graduationYear}/${sImg.name}`)
+				.ref(`${student.course}-${student.graduationYear}/${student.sapId}`)
 				.put(sImg)
 				.on("state_changed", null, (err) => console.log(err))
 		}
