@@ -13,11 +13,7 @@ export default function Internship({ internCounter, addInternship }) {
 		{
 			placeholder: "Intern Role",
 			name: "internRole",
-		},
-		{
-			placeholder: "Work Duration",
-			name: "internDura",
-		},
+		}
 	]
 
 	return (

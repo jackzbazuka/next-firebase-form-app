@@ -12,11 +12,7 @@ export default function Leadership({ leadCount, addLead }) {
 		{
 			placeholder: "Role: President",
 			name: "leadRole",
-		},
-		{
-			placeholder: "Leadership Duration: May 2021 - July 2021",
-			name: "leadDur",
-		},
+		}
 	]
 
 	return (

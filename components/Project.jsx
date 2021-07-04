@@ -12,11 +12,7 @@ export default function Project({ projectCount, addProject }) {
 		{
 			placeholder: "Tools & Tech used",
 			name: "projTool",
-		},
-		{
-			placeholder: "Project Duration",
-			name: "projDura",
-		},
+		}
 	]
 
 	return (
