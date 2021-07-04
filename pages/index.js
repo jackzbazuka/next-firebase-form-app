@@ -38,6 +38,26 @@ export default function Form() {
 		setProjectCount(projectCount)
 	}
 
+	const dateFormatter = (date) => {
+		let months = [
+			"Jan",
+			"Feb",
+			"March",
+			"April",
+			"May",
+			"June",
+			"July",
+			"August",
+			"September",
+			"October",
+			"November",
+			"December",
+		]
+		let dateArray = date.split("-")
+		let monthYear = `${months[dateArray[1] - 1]} ${dateArray[0]}`
+		return monthYear
+	}
+
 	const handleSubmit = async (e) => {
 		e.preventDefault()
 		console.log("Submitted")
@@ -49,9 +69,9 @@ export default function Form() {
 			const leadershipData = {
 				leadName: data.get(`leadName${leadership}`),
 				leadRole: data.get(`leadRole${leadership}`),
-				leadDur: `${data.get(`leadDuraStart${leadership}`)} - ${data.get(
-					`leadDuraEnd${leadership}`
-				)}`,
+				leadDur: `${dateFormatter(
+					data.get(`leadDuraStart${leadership}`)
+				)} - ${dateFormatter(data.get(`leadDuraEnd${leadership}`))}`,
 				leadDesc: data.getAll(`leadDesc${leadership}`),
 			}
 			// console.log('leadership data -->', leadershipData)
@@ -62,9 +82,9 @@ export default function Form() {
 			const internshipData = {
 				orgName: data.get(`orgName${internship}`),
 				internRole: data.get(`internRole${internship}`),
-				internDur: `${data.get(`internDuraStart${internship}`)} - ${data.get(
-					`internDuraEnd${internship}`
-				)}`,
+				internDur: `${dateFormatter(
+					data.get(`internDuraStart${internship}`)
+				)} - ${dateFormatter(data.get(`internDuraEnd${internship}`))}`,
 				internDesc: data.getAll(`internDesc${internship}`),
 			}
 			// console.log('internship data -->', internshipData)
@@ -75,15 +95,16 @@ export default function Form() {
 			const projectData = {
 				projName: data.get(`projName${project}`),
 				projTool: data.get(`projTool${project}`),
-				projDur: `${data.get(`projDuraStart${project}`)} - ${data.get(
-					`projDuraEnd${project}`
+				projDur: `${dateFormatter(data.get(`projDuraStart${project}`))} - ${dateFormatter(
+					data.get(`projDuraEnd${project}`)
 				)}`,
 				projDesc: data.getAll(`projDesc${project}`),
 			}
 			// console.log('project data -->', projectData)
 			return projectData
 		})
-
+		// console.log(dateFormatter("2017-9-22"))
+		console.log(leadershipArray)
 		const student = {
 			// personal
 			firstName: data.get("firstName"),
@@ -116,24 +137,22 @@ export default function Form() {
 			projectArray,
 			leadershipArray,
 		}
-
+		// console.log(student)
 		// console.log(internshipArray, projectArray, leadershipArray)
-
 		const sImg = data.get("profilePicture")
 
-		if (sImg) {
-			storage
-				.ref(`${student.course}-${student.graduationYear}/${student.sapId}`)
-				.put(sImg)
-				.on("state_changed", null, (err) => console.log(err))
-		}
+		// if (sImg) {
+		// 	storage
+		// 		.ref(`${student.course}-${student.graduationYear}/${student.sapId}`)
+		// 		.put(sImg)
+		// 		.on("state_changed", null, (err) => console.log(err))
+		// }
 
-		console.log(student)
-		const res = await axios({
-			method: "POST",
-			url: "/api/firestore",
-			data: student,
-		})
+		// const res = await axios({
+		// 	method: "POST",
+		// 	url: "/api/firestore",
+		// 	data: student,
+		// })
 
 		// if (res.status == 201) {
 		// 	router.reload()
