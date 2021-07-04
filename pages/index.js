@@ -12,7 +12,6 @@ import Internship from "@/components/Internship"
 import Leadership from "@/components/Leadership"
 
 export default function Form() {
-
 	const router = useRouter()
 
 	const [leadCount, setLeadCount] = useState([])
@@ -22,6 +21,22 @@ export default function Form() {
 	const addLead = () => setLeadCount([...leadCount, leadCount.length])
 	const addInternship = () => setInternCounter([...internCounter, internCounter.length])
 	const addProject = () => setProjectCount([...projectCount, projectCount.length])
+
+	const removeLead = () => {
+		let lead = [...leadCount]
+		lead.pop()
+		setLeadCount(lead)
+	}
+	const removeInternship = () => {
+		let intern = [...internCounter]
+		intern.pop()
+		setInternCounter(intern)
+	}
+	const removeProject = () => {
+		let projectCount = [...projectCount]
+		projectCount.pop()
+		setProjectCount(projectCount)
+	}
 
 	const handleSubmit = async (e) => {
 		e.preventDefault()
@@ -34,7 +49,9 @@ export default function Form() {
 			const leadershipData = {
 				leadName: data.get(`leadName${leadership}`),
 				leadRole: data.get(`leadRole${leadership}`),
-				leadDur: `${data.get(`leadDuraStart${leadership}`)} - ${data.get(`leadDuraEnd${leadership}`)}`,
+				leadDur: `${data.get(`leadDuraStart${leadership}`)} - ${data.get(
+					`leadDuraEnd${leadership}`
+				)}`,
 				leadDesc: data.getAll(`leadDesc${leadership}`),
 			}
 			// console.log('leadership data -->', leadershipData)
@@ -45,7 +62,9 @@ export default function Form() {
 			const internshipData = {
 				orgName: data.get(`orgName${internship}`),
 				internRole: data.get(`internRole${internship}`),
-				internDur: `${data.get(`internDuraStart${internship}`)} - ${data.get(`internDuraEnd${internship}`)}`,
+				internDur: `${data.get(`internDuraStart${internship}`)} - ${data.get(
+					`internDuraEnd${internship}`
+				)}`,
 				internDesc: data.getAll(`internDesc${internship}`),
 			}
 			// console.log('internship data -->', internshipData)
@@ -56,7 +75,9 @@ export default function Form() {
 			const projectData = {
 				projName: data.get(`projName${project}`),
 				projTool: data.get(`projTool${project}`),
-				projDur: `${data.get(`projDuraStart${project}`)} - ${data.get(`projDuraEnd${project}`)}`,
+				projDur: `${data.get(`projDuraStart${project}`)} - ${data.get(
+					`projDuraEnd${project}`
+				)}`,
 				projDesc: data.getAll(`projDesc${project}`),
 			}
 			// console.log('project data -->', projectData)
@@ -107,51 +128,78 @@ export default function Form() {
 				.on("state_changed", null, (err) => console.log(err))
 		}
 
+		console.log(student)
 		const res = await axios({
 			method: "POST",
 			url: "/api/firestore",
 			data: student,
 		})
 
-		if (res.status == 201) {
-			router.reload()
-		}
+		// if (res.status == 201) {
+		// 	router.reload()
+		// }
 	}
 
 	return (
-		<div className='w-full grid place-items-center'>
-			<header className='px-auto w-full bg-gray-900 text-white'>
-				<nav className='w-full py-10 md:py-8 flex flex-row justify-center place-items-center'>
-					<img className='p-1 mx-2 md:mx-5 my-1 h-14 md:h-12 bg-white select-none' src='/logo.png' alt='Logo of NMIMS' />
-					<h1 className='p-1 mx-2 md:mx-5 my-1 text-xl select-none'>NMIMS - School of Technology Management & Engineering</h1>
+		<div className="w-full grid place-items-center">
+			<header className="px-auto w-full bg-gray-900 text-white">
+				<nav className="w-full py-10 md:py-8 flex flex-row justify-center place-items-center">
+					<img
+						className="p-1 mx-2 md:mx-5 my-1 h-14 md:h-12 bg-white select-none"
+						src="/logo.png"
+						alt="Logo of NMIMS"
+					/>
+					<h1 className="p-1 mx-2 md:mx-5 my-1 text-xl select-none">
+						NMIMS - School of Technology Management & Engineering
+					</h1>
 				</nav>
 			</header>
-			<h1 className="mx-auto mt-10 mb-1 p-1 select-none text-2xl md:text-xl">STME Resume Form</h1>
-			<form className="mx-auto mt-1 mb-10 p-3 w-11/12 md:w-9/12 flex flex-col justify-around place-items-center" onSubmitCapture={handleSubmit}>
+			<h1 className="mx-auto mt-10 mb-1 p-1 select-none text-2xl md:text-xl">
+				STME Resume Form
+			</h1>
+			<form
+				className="mx-auto mt-1 mb-10 p-3 w-11/12 md:w-9/12 flex flex-col justify-around place-items-center"
+				onSubmitCapture={handleSubmit}
+			>
 				<PersonalDetails />
 				<Academics />
 				<Skills />
 				<Extracurricular />
-				<Internship internCounter={internCounter} addInternship={addInternship} />
-				<Project projectCount={projectCount} addProject={addProject} />
-				<Leadership leadCount={leadCount} addLead={addLead} />
+				<Internship
+					internCounter={internCounter}
+					addInternship={addInternship}
+					removeInternship={removeInternship}
+				/>
+				<Project
+					projectCount={projectCount}
+					addProject={addProject}
+					removeProject={removeProject}
+				/>
+				<Leadership leadCount={leadCount} addLead={addLead} removeLead={removeLead} />
 				<div className="m-1 p-1 w-full border-t-2 flex flex-col justify-around place-items-center ">
-					<p className="m-1 p-1 text-xs select-none italic">(You've checked all the form values and are ready to submit the data)</p>
-					<button type="submit" className="mx-auto my-5 px-10 py-2 select-none transition-all duration-500 text-white bg-gray-700 lg:hover:rounded-3xl lg:hover:bg-gray-800">
+					<p className="m-1 p-1 text-xs select-none italic">
+						(You've checked all the form values and are ready to submit the data)
+					</p>
+					<button
+						type="submit"
+						className="mx-auto my-5 px-10 py-2 select-none transition-all duration-500 text-white bg-gray-700 lg:hover:rounded-3xl lg:hover:bg-gray-800"
+					>
 						Submit
 					</button>
 				</div>
 			</form>
-			<footer className='px-auto py-16 w-full grid place-items-center select-none text-white bg-gray-900'>
-				<h4 className='mx-auto my-5 py-2 w-1/4 text-center border rounded border-purple-700'>MADE BY</h4>
-				<div className='mx-auto my-5 p-1 w-full flex flex-row justify-center divide-x'>
-					<p className='px-3 py-1 text-center'>Milind Sathe</p>
-					<p className='px-3 py-1 text-center'>Shivanshu Singh</p>
-					<p className='px-3 py-1 text-center'>Ritish Mohapatra</p>
-					<p className='px-3 py-1 text-center'>Darrsheni Sapovadia</p>
-					<p className='px-3 py-1 text-center'>Rupali Vastani</p>
-					<p className='px-3 py-1 text-center'>Rushali Vastani</p>
-					<p className='px-3 py-1 text-center'>Manthan Tripathi</p>
+			<footer className="px-auto py-16 w-full grid place-items-center select-none text-white bg-gray-900">
+				<h4 className="mx-auto my-5 py-2 w-1/4 text-center border rounded border-purple-700">
+					DEVELOPED BY
+				</h4>
+				<div className="mx-auto my-5 p-1 w-full flex flex-row justify-center divide-x">
+					<p className="px-3 py-1 text-center">Milind Sathe</p>
+					<p className="px-3 py-1 text-center">Shivanshu Singh</p>
+					<p className="px-3 py-1 text-center">Ritish Mohapatra</p>
+					{/* <p className="px-3 py-1 text-center">Darrsheni Sapovadia</p>
+					<p className="px-3 py-1 text-center">Rupali Vastani</p>
+					<p className="px-3 py-1 text-center">Rushali Vastani</p>
+					<p className="px-3 py-1 text-center">Manthan Tripathi</p> */}
 				</div>
 			</footer>
 		</div>
