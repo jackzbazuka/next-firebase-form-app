@@ -48,7 +48,7 @@ export default function Leadership({ leadCount, addLead, removeLead }) {
 						<button
 							type="button"
 							onClick={removeLead}
-							className="m-1 px-3 py-2 rounded-xl select-none transition-all duration-500 border text-black bg-white lg:hover:text-white lg:hover:bg-red-900"
+							className="m-1 px-3 py-2 rounded-xl select-none transition-all duration-500 border text-black bg-white lg:hover:text-white lg:hover:bg-red-700"
 						>
 							Remove Previous Leadership
 						</button>
