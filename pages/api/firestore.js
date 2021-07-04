@@ -8,6 +8,7 @@ export default async function handler(req, res) {
 
 	if (method == "POST") {
 		await db.collection(`${body.course}-${body.graduationYear}`).doc(body.sapId).set({
+			studentID: body.uid,
 			firstName: body.firstName,
 			lastName: body.lastName,
 			sapId: body.sapId,
