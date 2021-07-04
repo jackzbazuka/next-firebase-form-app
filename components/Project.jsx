@@ -40,7 +40,7 @@ export default function Project({ projectCount, addProject, removeProject }) {
 					<button
 						type="button"
 						onClick={addProject}
-						className="m-1 px-3 py-2 rounded-xl select-none transition-all duration-500 border text-black bg-white lg:hover:text-white lg:hover:bg-purple-900"
+						className="m-1 px-3 py-2 rounded text-sm select-none transition-all duration-500 border text-black bg-white lg:hover:text-white lg:hover:bg-green-600"
 					>
 						Add Project
 					</button>
@@ -48,9 +48,9 @@ export default function Project({ projectCount, addProject, removeProject }) {
 						<button
 							type="button"
 							onClick={removeProject}
-							className="m-1 px-3 py-2 rounded-xl select-none transition-all duration-500 border text-black bg-white lg:hover:text-white lg:hover:bg-red-700"
+							className="m-1 px-3 py-2 rounded text-sm select-none transition-all duration-500 border text-black bg-white lg:hover:text-white lg:hover:bg-red-700"
 						>
-							Remove Previous Project
+							Remove Project
 						</button>
 					) : null}
 				</div>

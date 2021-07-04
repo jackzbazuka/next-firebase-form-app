@@ -57,7 +57,14 @@ export default function Signin() {
 					<h1 className="p-1 mx-2 md:mx-5 my-1 text-xl select-none">NMIMS - School of Technology Management & Engineering</h1>
 				</nav>
 			</header>
-			<button onClick={handleSignin} className='mx-auto mt-32 px-5 py-3 rounded-md transition-all duration-500 text-white bg-blue-700 lg:hover:bg-blue-800'>Sign in with Google</button>
+			<div className='mx-auto mt-32 p-5 w-1/2 border grid place-items-center rounded-lg'>
+				<h1 className='mx-auto my-5 text-3xl'>Guidelines</h1>
+				<ul className='m-1 p-1 list-inside list-disc'>
+					<li className='m-1 p-1'>This form data will be used to generate your CV, so please fill it responsibly.</li>
+					<li className='m-1 p-1'>and so on...</li>
+				</ul>
+				<button onClick={handleSignin} className='mx-auto my-5 p-3 bg-left rounded-md transition-all duration-500 text-white bg-blue-600 lg:hover:bg-blue-700'>Sign in with Google</button>
+			</div>
 		</div >
 	)
 }
