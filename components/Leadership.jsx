@@ -33,7 +33,7 @@ export default function Leadership({ leadCount, addLead }) {
 						</div>
 					))}
 				</div>
-				<button type="button" onClick={addLead} className='m-1 p-2 w-1/6 rounded-xl transition-all duration-500 border text-black bg-white lg:hover:text-white lg:hover:bg-purple-900'>Add Leadersip</button>
+				<button type="button" onClick={addLead} className='m-1 px-3 py-2 rounded-xl select-none transition-all duration-500 border text-black bg-white lg:hover:text-white lg:hover:bg-purple-900'>Add Leadersip</button>
 			</div>
 		</Section>
 	)

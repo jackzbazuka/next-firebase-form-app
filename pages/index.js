@@ -122,12 +122,12 @@ export default function Form() {
 		<div className='w-full grid place-items-center'>
 			<header className='px-auto w-full bg-gray-900 text-white'>
 				<nav className='w-full py-10 md:py-8 flex flex-row justify-center place-items-center'>
-					<img className='p-1 mx-2 md:mx-5 my-1 h-14 md:h-12 bg-white' src='/logo.png' alt='Logo of NMIMS' />
+					<img className='p-1 mx-2 md:mx-5 my-1 h-14 md:h-12 bg-white select-none' src='/logo.png' alt='Logo of NMIMS' />
 					<h1 className='p-1 mx-2 md:mx-5 my-1 text-xl select-none'>NMIMS - School of Technology Management & Engineering</h1>
 				</nav>
 			</header>
 			<h1 className="mx-auto mt-10 mb-1 p-1 select-none text-2xl md:text-xl">STME Resume Form</h1>
-			<form className="mx-auto mt-1 mb-10 p-3 w-11/12 md:w-8/12 flex flex-col justify-around place-items-center" onSubmitCapture={handleSubmit}>
+			<form className="mx-auto mt-1 mb-10 p-3 w-11/12 md:w-9/12 flex flex-col justify-around place-items-center" onSubmitCapture={handleSubmit}>
 				<PersonalDetails />
 				<Academics />
 				<Skills />
@@ -137,7 +137,7 @@ export default function Form() {
 				<Leadership leadCount={leadCount} addLead={addLead} />
 				<div className="m-1 p-1 w-full border-t-2 flex flex-col justify-around place-items-center ">
 					<p className="m-1 p-1 text-xs select-none italic">(You've checked all the form values and are ready to submit the data)</p>
-					<button type="submit" className="mx-auto my-5 p-2 w-1/5 transition-all duration-500 text-white bg-gray-700 lg:hover:rounded-3xl lg:hover:bg-gray-800">
+					<button type="submit" className="mx-auto my-5 px-10 py-2 select-none transition-all duration-500 text-white bg-gray-700 lg:hover:rounded-3xl lg:hover:bg-gray-800">
 						Submit
 					</button>
 				</div>
