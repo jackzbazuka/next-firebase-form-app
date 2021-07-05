@@ -41,19 +41,21 @@ export default function Form() {
 
 	useEffect(() => {
 		firebase.auth().onAuthStateChanged(async (user) => {
-			if (user && user.email.split("@")[1] === "nmims.edu.in") {
+			if (
+				user
+				// && user.email.split("@")[1] === "nmims.edu.in"
+			) {
 				// console.log(user.email.split("@")[1])
 				setSUser(user)
-				// const res = await axios({
-				// 	method: "GET",
-				// 	url: "/api/test",
-				// 	data: user.uid,
-				// })
 				console.log(user.uid, "Is logged in")
-			} else if (user && user.email.split("@")[1] !== "nmims.edu.in") {
-				console.log("Please sign in with NMIMS ID")
-				handleSignOut()
-			} else {
+			}
+			// else if (user
+			// 	 && user.email.split("@")[1] !== "nmims.edu.in"
+			// 	 ) {
+			// 	console.log("Please sign in with NMIMS ID")
+			// 	handleSignOut()
+			// }
+			else {
 				console.log("Is logged out")
 				router.push("/")
 			}
@@ -164,6 +166,7 @@ export default function Form() {
 		const student = {
 			// uid
 			uid: sUser.uid,
+			googleEmail: sUser.email,
 			// personal
 			firstName: data.get("firstName"),
 			lastName: data.get("lastName"),
@@ -201,7 +204,7 @@ export default function Form() {
 
 		if (sImg) {
 			storage
-				.ref(`${student.course}-${student.graduationYear}/${student.sapId}`)
+				.ref(`${student.course}-${student.graduationYear}/${student.sapId} ${student.uid}`)
 				.put(sImg)
 				.on("state_changed", null, (err) => console.log(err))
 		}

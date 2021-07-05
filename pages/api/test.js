@@ -15,8 +15,9 @@ export default async function handler(req, res) {
 
 	if (method == "POST") {
 		console.log(body)
-		await db.collection(`${body.course}-${body.graduationYear}`).doc(body.sapId).set({
+		await db.collection(`${body.course}-${body.graduationYear}`).doc(body.uid).set({
 			studentID: body.uid,
+			googleEmail: body.googleEmail,
 			firstName: body.firstName,
 			lastName: body.lastName,
 			sapId: body.sapId,
