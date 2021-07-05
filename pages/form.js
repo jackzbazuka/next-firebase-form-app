@@ -212,7 +212,7 @@ export default function Form() {
 							{hasData && <button onClick={handleDownload} className='m-1 px-3 py-1 rounded select-none transition-all text-white bg-gray-700 lg:hover:bg-gray-800'>Download data</button>}
 							<button onClick={handleSignOut} className='m-1 px-3 py-1 rounded select-none transition-all text-white bg-red-700 lg:hover:bg-red-800'>Logout</button>
 						</div>
-						<h1 className="mx-auto mt-5 mb-1 p-1 select-none text-2xl md:text-xl">STME Resume Form</h1>
+						<h1 className="mx-auto mt-5 mb-1 p-1 select-none text-2xl md:text-xl">STME CV Form</h1>
 						<form
 							className="mx-auto mt-1 mb-10 p-3 w-11/12 md:w-9/12 flex flex-col justify-around place-items-center"
 							onSubmitCapture={handleSubmit}
