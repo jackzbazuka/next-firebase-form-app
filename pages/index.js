@@ -11,6 +11,7 @@ export default function Signin() {
 		"Keywords field is supposed to summarize your profile/skillset/preferences.",
 		"Please follow proper sentence case and avoid unnecessary capitalizations and hyphens(-). Insert space after commas.",
 		"Kindly limit your Internship, Projects and Leadership roles to max. 6-8 fields (in total) so that the CV doesn't exceed 1 page.",
+		"Internships, Projects and Leadership is capped at 8 inputs in total and Description is capped at 5 fields each entry",
 		"Space out your description into 2-3 lines, and keep it as minimal as possible for each line, try to avoid long paragraphs.",
 		"In the description field, do not write more than 100 words for each Internship/ Project",
 		"Kindly upload your picture in formals (preferred).",

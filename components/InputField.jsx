@@ -1,6 +1,6 @@
 export default function InputField({ data }) {
 	let reqd = data.optional ? false : true
-	console.log(reqd, data.name)
+	// console.log(reqd, data.name)
 	return (
 		<input
 			type="text"

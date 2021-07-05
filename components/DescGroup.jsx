@@ -2,7 +2,10 @@ import { useState } from "react"
 
 export default function DescGroup({ name, count }) {
 	const [descCounter, setDescCounter] = useState([0])
-	const addDescription = () => setDescCounter([...descCounter, descCounter.length])
+	const addDescription = () => {
+		if (descCounter.length < 5) setDescCounter([...descCounter, descCounter.length])
+		else console.log("Too many description fields")
+	}
 	const removeDescription = () => {
 		let desc = [...descCounter]
 		desc.pop()
