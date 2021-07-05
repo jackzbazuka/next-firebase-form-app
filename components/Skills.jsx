@@ -6,17 +6,14 @@ export default function Skills() {
 		programmingLanguage: {
 			name: "programmingLanguage",
 			placeholder: "Programming Language: C++, Java, Python",
-			required: true,
 		},
 		toolsAndTechnologies: {
 			name: "toolsAndTechnologies",
 			placeholder: "Tools & Technologies: Android, Git, ReactJS",
-			required: true,
 		},
 		coreSkills: {
 			name: "coreSkills",
 			placeholder: "Core Skills: Communication, Leadership, Project Management",
-			required: true,
 		},
 	}
 	return (

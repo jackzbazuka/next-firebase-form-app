@@ -3,12 +3,14 @@ import InputField from "./InputField"
 
 export default function Extracurricular() {
 	let extra = {
-		hobbies: { name: "hobbies", placeholder: "Hobbies: Music, Dance, Cycling", required: true },
+		hobbies: {
+			name: "hobbies",
+			placeholder: "Hobbies: Music, Dance, Cycling",
+		},
 		certificationAndCourse: {
 			name: "certificationAndCourse",
 			placeholder:
 				"Certificates & Courses: Flutter Development (Coursera), Android Development (freeCodeCamp)",
-			required: true,
 		},
 	}
 	return (

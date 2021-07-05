@@ -4,34 +4,30 @@ import InputField from "./InputField"
 export default function PersonalDetails() {
 	const ageArr = [17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
 	const personal = {
-		firstName: { name: "firstName", placeholder: "First Name: Anna", required: true },
-		lastName: { name: "lastName", placeholder: "Last Name: Morgan", required: true },
-		sapId: { name: "sapId", placeholder: "SAP ID: 70472015001", required: true },
+		firstName: { name: "firstName", placeholder: "First Name: Anna" },
+		lastName: { name: "lastName", placeholder: "Last Name: Morgan" },
+		sapId: { name: "sapId", placeholder: "SAP ID: 70472015001" },
 		keywords: {
 			name: "keywords",
-			placeholder: "Keywords: To summarize your profile",
-			required: true,
+			placeholder: "Keywords: Operations, Design, Fullstack, Technical, Management",
 		},
-		mobile: { name: "mobile", placeholder: "Mobile Number (10 digits)", required: true },
+		mobile: { name: "mobile", placeholder: "Mobile Number (10 digits)" },
 		email: {
 			name: "email",
 			placeholder: "NMIMS Email ID: anna.morgan@nmims.edu.in",
-			required: true,
 		},
 		githubUrl: {
 			name: "githubUrl",
 			placeholder: "Github Profile URL: https://github.com/anna",
-			required: false,
+			optional: true,
 		},
 		linkedinUrl: {
 			name: "linkedinUrl",
 			placeholder: "Linkedin Profile URL: https://linkedin.com/anna-123xaw",
-			required: true,
 		},
 		address: {
 			name: "address",
 			placeholder: "Residential Address: Flat 205, XYZ apts, Santacruz, Mumbai, Maharashtra",
-			required: true,
 		},
 	}
 	return (

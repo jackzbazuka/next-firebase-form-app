@@ -7,12 +7,10 @@ export default function Academics() {
 		tenPercentile: {
 			name: "tenPercentile",
 			placeholder: "10th Percentile: 90",
-			required: true,
 		},
 		twelvePercentile: {
 			name: "twelvePercentile",
 			placeholder: "12th Percentile: 75",
-			required: true,
 		},
 	}
 	return (
