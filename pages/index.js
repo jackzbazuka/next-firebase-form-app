@@ -5,23 +5,24 @@ import firebase from "@/firebase/clientApp"
 export default function Signin() {
 	const [sUser, setSUser] = useState(null)
 	let guidelines = [
-		"Please fill the form responsibly as this will generate your CV",
-		"Please log in with your NMIMS email id only",
-		"Character limit is set so kindly phrase the descriptions accordingly",
-		"Kindly limit your Internship, Projects and Leadership roles to max. 6-8 fields (in total) so that the CV doesn't exceed 1 page",
+		"Please use your NMIMS email id throughout the form.",
+		"Fill the form responsibly as this will auto-generate your CV once the form closes.",
+		// "Limits are set so kindly phrase the descriptions accordingly",
+		"Please follow proper sentence case and avoid unnecessary capitalizations and hyphens(-). Insert space after commas.",
+		"Kindly limit your Internship, Projects and Leadership roles to max. 6-8 fields (in total) so that the CV doesn't exceed 1 page.",
+		"Space out your description into 2-3 lines, and keep it as minimal as possible for each line, try to avoid long paragraphs.",
 		"In the description field, do not write more than 100 words for each Internship/ Project",
 		"Kindly upload your picture in formals (preferred)",
-		"In the email id field, use your NMIMS email id only",
-		"Special characters are not allowed",
-		"If a field is to be kept blank please do not add it",
+		"If a field is to be kept blank please do not add it, use the remove buttons",
+		"In case of any confusions/queries, please contact the placecomm team mentioned below",
 	]
 	const provider = new firebase.auth.GoogleAuthProvider()
 
 	const router = useRouter()
 
-	useEffect(() => {
-		console.log(sUser)
-	})
+	// useEffect(() => {
+	// 	console.log(sUser)
+	// })
 
 	const handleSignin = async (e) => {
 		e.preventDefault()
@@ -78,15 +79,17 @@ export default function Signin() {
 						responsibly.
 					</li>
 					<li className="m-1 p-1">and so on...</li> */}
-					{guidelines.map((guide) => (
-						<li className="m-1 p-1">{guide}</li>
+					{guidelines.map((guide, idx) => (
+						<li key={idx} className="m-1 p-1">
+							{guide}
+						</li>
 					))}
 				</ul>
 				<button
 					onClick={handleSignin}
 					className="mx-auto my-5 p-3 bg-left rounded-md transition-all duration-500 text-white bg-blue-600 lg:hover:bg-blue-700"
 				>
-					Sign in with Google
+					Sign in with NMIMS ID
 				</button>
 			</div>
 		</div>

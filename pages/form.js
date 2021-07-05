@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import { useRouter } from "next/router"
 import axios from "axios"
 import { storage } from "@/firebase/clientApp"
-import firebase from '@/firebase/clientApp'
+import firebase from "@/firebase/clientApp"
 
 import PersonalDetails from "@/components/PersonalDetails"
 import Academics from "@/components/Academics"
@@ -18,19 +18,44 @@ export default function Form() {
 	const [leadCount, setLeadCount] = useState([])
 	const [projectCount, setProjectCount] = useState([])
 	const [internCounter, setInternCounter] = useState([])
+	let dynamicCount = leadCount.length + projectCount.length + internCounter.length
+	// console.log(dynamicCount)
+	// console.log(leadCount.length + projectCount.length + internCounter.length)
 	const [sUser, setSUser] = useState(null)
 	const [hasData, setHasData] = useState(false)
-
-	const addLead = () => setLeadCount([...leadCount, leadCount.length])
-	const addInternship = () => setInternCounter([...internCounter, internCounter.length])
-	const addProject = () => setProjectCount([...projectCount, projectCount.length])
+	const addLead = () => {
+		if (dynamicCount < 8) {
+			setLeadCount([...leadCount, leadCount.length])
+		} else console.log("You've reached recommended limit of dynamic fields")
+	}
+	const addInternship = () => {
+		if (dynamicCount < 8) {
+			setInternCounter([...internCounter, internCounter.length])
+		} else console.log("You've reached recommended limit of dynamic fields")
+	}
+	const addProject = () => {
+		if (dynamicCount < 8) {
+			setProjectCount([...projectCount, projectCount.length])
+		} else console.log("You've reached recommended limit of dynamic fields")
+	}
 
 	useEffect(() => {
-		firebase.auth().onAuthStateChanged(user => {
-			if (user) {
+		firebase.auth().onAuthStateChanged(async (user) => {
+			if (user && user.email.split("@")[1] === "nmims.edu.in") {
+				// console.log(user.email.split("@")[1])
 				setSUser(user)
+				// const res = await axios({
+				// 	method: "GET",
+				// 	url: "/api/test",
+				// 	data: user.uid,
+				// })
+				console.log(user.uid, "Is logged in")
+			} else if (user && user.email.split("@")[1] !== "nmims.edu.in") {
+				console.log("Please sign in with NMIMS ID")
+				handleSignOut()
 			} else {
-				router.push('/')
+				console.log("Is logged out")
+				router.push("/")
 			}
 		})
 	}, [])
@@ -73,18 +98,20 @@ export default function Form() {
 
 	const handleDownload = async (e) => {
 		e.preventDefault()
-
-
 	}
 
 	const handleSignOut = async (e) => {
-		e.preventDefault()
+		// e.preventDefault()
 
-		firebase.auth().signOut().then(() => {
-			router.push('/')
-		}).catch((err) => {
-			console.log(err)
-		})
+		firebase
+			.auth()
+			.signOut()
+			.then(() => {
+				router.push("/")
+			})
+			.catch((err) => {
+				console.log(err)
+			})
 	}
 
 	const handleSubmit = async (e) => {
@@ -133,7 +160,7 @@ export default function Form() {
 			return projectData
 		})
 		// console.log(dateFormatter("2017-9-22"))
-		console.log(leadershipArray)
+		// console.log(leadershipArray)
 		const student = {
 			// uid
 			uid: sUser.uid,
@@ -179,15 +206,26 @@ export default function Form() {
 				.on("state_changed", null, (err) => console.log(err))
 		}
 
+		// const res = await axios({
+		// 	method: "POST",
+		// 	url: "/api/test",
+		// 	data: {
+		// 		uid: sUser.uid,
+		// 		name: sUser.displayName,
+		// 		email: sUser.email,
+		// 		sapId: student.sapId,
+		// 	},
+		// })
+
 		const res = await axios({
 			method: "POST",
-			url: "/api/firestore",
+			url: "/api/test",
 			data: student,
 		})
 
-		if (res.status == 201) {
-			router.reload()
-		}
+		// if (res.status == 201) {
+		// 	router.reload()
+		// }
 	}
 
 	return (
@@ -204,58 +242,80 @@ export default function Form() {
 					</h1>
 				</nav>
 			</header>
-			{sUser ?
-				(
-					<>
-						<div className='p-2 w-full flex flex-row justify-end'>
-							<p className='m-1 px-3 py-1 rounded select-none border'>Logged in as {sUser.displayName}</p>
-							{hasData && <button onClick={handleDownload} className='m-1 px-3 py-1 rounded select-none transition-all text-white bg-gray-700 lg:hover:bg-gray-800'>Download data</button>}
-							<button onClick={handleSignOut} className='m-1 px-3 py-1 rounded select-none transition-all text-white bg-red-700 lg:hover:bg-red-800'>Logout</button>
-						</div>
-						<h1 className="mx-auto mt-5 mb-1 p-1 select-none text-2xl md:text-xl">STME Resume Form</h1>
-						<form
-							className="mx-auto mt-1 mb-10 p-3 w-11/12 md:w-9/12 flex flex-col justify-around place-items-center"
-							onSubmitCapture={handleSubmit}
+			{sUser ? (
+				<>
+					<div className="p-2 w-full flex flex-row justify-end">
+						<p className="m-1 px-3 py-1 rounded select-none border">
+							Logged in as {sUser.displayName}
+						</p>
+						{hasData && (
+							<button
+								onClick={handleDownload}
+								className="m-1 px-3 py-1 rounded select-none transition-all text-white bg-gray-700 lg:hover:bg-gray-800"
+							>
+								Download data
+							</button>
+						)}
+						<button
+							onClick={handleSignOut}
+							className="m-1 px-3 py-1 rounded select-none transition-all text-white bg-red-700 lg:hover:bg-red-800"
 						>
-							<PersonalDetails />
-							<Academics />
-							<Skills />
-							<Extracurricular />
-							<Internship
-								internCounter={internCounter}
-								addInternship={addInternship}
-								removeInternship={removeInternship}
-							/>
-							<Project
-								projectCount={projectCount}
-								addProject={addProject}
-								removeProject={removeProject}
-							/>
-							<Leadership leadCount={leadCount} addLead={addLead} removeLead={removeLead} />
-							<div className="m-1 p-1 w-full border-t-2 flex flex-col justify-around place-items-center ">
-								<p className="m-1 p-1 text-xs select-none italic">
-									(You've checked all the form values and are ready to submit the data)
-								</p>
-								<button
-									type="submit"
-									className="mx-auto my-5 px-10 py-2 select-none transition-all duration-500 text-white bg-gray-700 lg:hover:rounded-3xl lg:hover:bg-gray-800"
-								>
-									Submit
-								</button>
-							</div>
-						</form>
-						<footer className="px-auto py-16 w-full grid place-items-center select-none text-white bg-gray-900">
-							<h4 className="mx-auto my-5 px-5 py-2 text-center border animate-pulse rounded border-purple-700">
-								DEVELOPED BY
-							</h4>
-							<div className="mx-auto my-5 p-1 w-full flex flex-row justify-center divide-x-2">
-								<p className="px-4 py-1 text-center">Shivanshu Singh</p>
-								<p className="px-4 py-1 text-center">Milind Sathe</p>
-								<p className="px-4 py-1 text-center">Ritish Mohapatra</p>
-							</div>
-						</footer></>
-				) : <span className='m-10 p-10'>Not signed in</span>
-			}
+							Logout
+						</button>
+					</div>
+					<h1 className="mx-auto mt-5 mb-1 p-1 select-none text-2xl md:text-xl">
+						STME Resume Form
+					</h1>
+					<form
+						className="mx-auto mt-1 mb-10 p-3 w-11/12 md:w-9/12 flex flex-col justify-around place-items-center"
+						onSubmitCapture={handleSubmit}
+					>
+						<PersonalDetails />
+						<Academics />
+						<Skills />
+						<Extracurricular />
+						<Internship
+							internCounter={internCounter}
+							addInternship={addInternship}
+							removeInternship={removeInternship}
+						/>
+						<Project
+							projectCount={projectCount}
+							addProject={addProject}
+							removeProject={removeProject}
+						/>
+						<Leadership
+							leadCount={leadCount}
+							addLead={addLead}
+							removeLead={removeLead}
+						/>
+						<div className="m-1 p-1 w-full border-t-2 flex flex-col justify-around place-items-center ">
+							<p className="m-1 p-1 text-xs select-none italic">
+								(You've checked all the form values and are ready to submit the
+								data)
+							</p>
+							<button
+								type="submit"
+								className="mx-auto my-5 px-10 py-2 select-none transition-all duration-500 text-white bg-gray-700 lg:hover:rounded-3xl lg:hover:bg-gray-800"
+							>
+								Submit
+							</button>
+						</div>
+					</form>
+					<footer className="px-auto py-16 w-full grid place-items-center select-none text-white bg-gray-900">
+						<h4 className="mx-auto my-5 px-5 py-2 text-center border animate-pulse rounded border-purple-700">
+							DEVELOPED BY
+						</h4>
+						<div className="mx-auto my-5 p-1 w-full flex flex-row justify-center divide-x-2">
+							<p className="px-4 py-1 text-center">Shivanshu Singh</p>
+							<p className="px-4 py-1 text-center">Milind Sathe</p>
+							<p className="px-4 py-1 text-center">Ritish Mohapatra</p>
+						</div>
+					</footer>
+				</>
+			) : (
+				<span className="m-10 p-10">Not signed in</span>
+			)}
 		</div>
 	)
 }
