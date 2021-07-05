@@ -7,7 +7,7 @@ export default async function handler(req, res) {
 	const db = admin.firestore()
 
 	if (method == "POST") {
-		await db.collection(`${body.course}-${body.graduationYear}`).doc(body.sapId).set({
+		await db.collection('student').doc(`${body.course}-${body.graduationYear}`).collection('students').doc(body.sapId).set({
 			studentID: body.uid,
 			firstName: body.firstName,
 			lastName: body.lastName,
