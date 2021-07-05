@@ -1,27 +1,25 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { useRouter } from "next/router"
 import firebase from "@/firebase/clientApp"
 
 export default function Signin() {
+
 	const [sUser, setSUser] = useState(null)
-	let guidelines = [
-		"Please fill the form responsibly as this will generate your CV",
-		"Please log in with your NMIMS email id only",
-		"Character limit is set so kindly phrase the descriptions accordingly",
-		"Kindly limit your Internship, Projects and Leadership roles to max. 6-8 fields (in total) so that the CV doesn't exceed 1 page",
-		"In the description field, do not write more than 100 words for each Internship/ Project",
-		"Kindly upload your picture in formals (preferred)",
-		"In the email id field, use your NMIMS email id only",
-		"Special characters are not allowed",
-		"If a field is to be kept blank please do not add it",
-	]
+	const [guidelines, setGuidlines] = useState([
+		"Please fill the form responsibly as this will generate your CV.",
+		"Please log in with your NMIMS email id only.",
+		"Character limit is set so kindly phrase the descriptions accordingly.",
+		"Kindly limit your Internship, Projects and Leadership roles to max. 6-8 fields (in total) so that the CV doesn't exceed 1 page.",
+		"In the description field, do not write more than 100 words for each Internship/Project.",
+		"Kindly upload your picture in formals (preferred).",
+		"In the email id field, use your NMIMS email id only.",
+		"Special characters are not allowed.",
+		"If a field is to be kept blank please do not add it.",
+	])
+
 	const provider = new firebase.auth.GoogleAuthProvider()
 
 	const router = useRouter()
-
-	useEffect(() => {
-		console.log(sUser)
-	})
 
 	const handleSignin = async (e) => {
 		e.preventDefault()
@@ -70,16 +68,11 @@ export default function Signin() {
 					</h1>
 				</nav>
 			</header>
-			<div className="mx-auto mt-32 p-5 w-1/2 border grid place-items-center rounded-lg">
-				<h1 className="mx-auto my-5 text-3xl">Guidelines</h1>
+			<div className="mx-auto mt-16 p-3 w-1/2 border grid place-items-center rounded-lg">
+				<h1 className="mx-auto my-3 text-3xl">Guidelines</h1>
 				<ul className="m-1 p-1 list-inside list-disc">
-					{/* <li className="m-1 p-1">
-						This form data will be used to generate your CV, so please fill it
-						responsibly.
-					</li>
-					<li className="m-1 p-1">and so on...</li> */}
-					{guidelines.map((guide) => (
-						<li className="m-1 p-1">{guide}</li>
+					{guidelines.map((guide, idx) => (
+						<li key={idx} className="m-1 p-1">{guide}</li>
 					))}
 				</ul>
 				<button
