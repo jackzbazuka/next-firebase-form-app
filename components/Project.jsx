@@ -6,11 +6,11 @@ import DatePicker from "@/components/DatePicker"
 export default function Project({ projectCount, addProject, removeProject }) {
 	const projectField = [
 		{
-			placeholder: "Project Name",
+			placeholder: "Project Name: Gesture Controlled Robot",
 			name: "projName",
 		},
 		{
-			placeholder: "Tools & Tech used",
+			placeholder: "Tools & Tech used: Arduino, Raspberry Pi",
 			name: "projTool",
 		},
 	]

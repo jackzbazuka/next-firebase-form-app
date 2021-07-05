@@ -6,7 +6,7 @@ import DatePicker from "@/components/DatePicker"
 export default function Leadership({ leadCount, addLead, removeLead }) {
 	const leadField = [
 		{
-			placeholder: "Organization Name: Student Council",
+			placeholder: "Organization Name: Student Council, NMIMS",
 			name: "leadName",
 		},
 		{

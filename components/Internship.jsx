@@ -6,11 +6,11 @@ import DatePicker from "@/components/DatePicker"
 export default function Internship({ internCounter, addInternship, removeInternship }) {
 	const internField = [
 		{
-			placeholder: "Organization Name",
+			placeholder: "Organization Name: TCS",
 			name: "orgName",
 		},
 		{
-			placeholder: "Intern Role",
+			placeholder: "Intern Role: Fullstack Developer",
 			name: "internRole",
 		},
 	]
