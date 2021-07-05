@@ -77,7 +77,7 @@ export default function Signin() {
 				</ul>
 				<button
 					onClick={handleSignin}
-					className="mx-auto my-5 p-3 bg-left rounded-md transition-all duration-500 text-white bg-blue-600 lg:hover:bg-blue-700"
+					className="mx-auto my-5 px-3 py-2 bg-left rounded-md transition-all duration-500 text-white bg-blue-600 lg:hover:bg-blue-700"
 				>
 					Sign in with Google
 				</button>
