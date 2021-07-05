@@ -19,6 +19,7 @@ export default function Form() {
 	const [projectCount, setProjectCount] = useState([])
 	const [internCounter, setInternCounter] = useState([])
 	const [sUser, setSUser] = useState(null)
+	const [hasData, setHasData] = useState(false)
 
 	const addLead = () => setLeadCount([...leadCount, leadCount.length])
 	const addInternship = () => setInternCounter([...internCounter, internCounter.length])
@@ -68,6 +69,12 @@ export default function Form() {
 		let dateArray = date.split("-")
 		let monthYear = `${months[dateArray[1] - 1]} ${dateArray[0]}`
 		return monthYear
+	}
+
+	const handleDownload = async (e) => {
+		e.preventDefault()
+
+
 	}
 
 	const handleSignOut = async (e) => {
@@ -202,6 +209,7 @@ export default function Form() {
 					<>
 						<div className='p-2 w-full flex flex-row justify-end'>
 							<p className='m-1 px-3 py-1 rounded select-none border'>Logged in as {sUser.displayName}</p>
+							{hasData && <button onClick={handleDownload} className='m-1 px-3 py-1 rounded select-none transition-all text-white bg-gray-700 lg:hover:bg-gray-800'>Download data</button>}
 							<button onClick={handleSignOut} className='m-1 px-3 py-1 rounded select-none transition-all text-white bg-red-700 lg:hover:bg-red-800'>Logout</button>
 						</div>
 						<h1 className="mx-auto mt-5 mb-1 p-1 select-none text-2xl md:text-xl">STME Resume Form</h1>
