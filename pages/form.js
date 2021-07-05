@@ -264,7 +264,7 @@ export default function Form() {
 						</button>
 					</div>
 					<h1 className="mx-auto mt-5 mb-1 p-1 select-none text-2xl md:text-xl">
-						STME Resume Form
+						STME CV Form
 					</h1>
 					<form
 						className="mx-auto mt-1 mb-10 p-3 w-11/12 md:w-9/12 flex flex-col justify-around place-items-center"
@@ -306,7 +306,7 @@ export default function Form() {
 						<h4 className="mx-auto my-5 px-5 py-2 text-center border animate-pulse rounded border-purple-700">
 							DEVELOPED BY
 						</h4>
-						<div className="mx-auto my-5 p-1 w-full flex flex-row justify-center divide-x-2">
+						<div className="mx-auto my-5 p-1 w-full flex flex-row justify-center divide-x">
 							<p className="px-4 py-1 text-center">Shivanshu Singh</p>
 							<p className="px-4 py-1 text-center">Milind Sathe</p>
 							<p className="px-4 py-1 text-center">Ritish Mohapatra</p>

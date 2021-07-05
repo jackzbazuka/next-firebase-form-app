@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { useRouter } from "next/router"
 import firebase from "@/firebase/clientApp"
 
 export default function Signin() {
 	const [sUser, setSUser] = useState(null)
-	let guidelines = [
+	const [guidelines, setGuidlines] = useState([
 		"Please use your NMIMS email id throughout the form.",
 		"Fill the form responsibly as this will auto-generate your CV once the form closes.",
 		// "Limits are set so kindly phrase the descriptions accordingly",
@@ -15,14 +15,11 @@ export default function Signin() {
 		"Kindly upload your picture in formals (preferred)",
 		"If a field is to be kept blank please do not add it, use the remove buttons",
 		"In case of any confusions/queries, please contact the placecomm team mentioned below",
-	]
+	])
+
 	const provider = new firebase.auth.GoogleAuthProvider()
 
 	const router = useRouter()
-
-	// useEffect(() => {
-	// 	console.log(sUser)
-	// })
 
 	const handleSignin = async (e) => {
 		e.preventDefault()
@@ -71,14 +68,9 @@ export default function Signin() {
 					</h1>
 				</nav>
 			</header>
-			<div className="mx-auto mt-32 p-5 w-1/2 border grid place-items-center rounded-lg">
-				<h1 className="mx-auto my-5 text-3xl">Guidelines</h1>
+			<div className="mx-auto mt-16 p-3 w-1/2 border grid place-items-center rounded-lg">
+				<h1 className="mx-auto my-3 text-3xl">Guidelines</h1>
 				<ul className="m-1 p-1 list-inside list-disc">
-					{/* <li className="m-1 p-1">
-						This form data will be used to generate your CV, so please fill it
-						responsibly.
-					</li>
-					<li className="m-1 p-1">and so on...</li> */}
 					{guidelines.map((guide, idx) => (
 						<li key={idx} className="m-1 p-1">
 							{guide}
@@ -87,7 +79,7 @@ export default function Signin() {
 				</ul>
 				<button
 					onClick={handleSignin}
-					className="mx-auto my-5 p-3 bg-left rounded-md transition-all duration-500 text-white bg-blue-600 lg:hover:bg-blue-700"
+					className="mx-auto my-5 px-3 py-2 bg-left rounded-md transition-all duration-500 text-white bg-blue-600 lg:hover:bg-blue-700"
 				>
 					Sign in with NMIMS ID
 				</button>
