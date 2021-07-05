@@ -273,7 +273,7 @@ export default function Form() {
 						className="mx-auto mt-1 mb-10 p-3 w-11/12 md:w-9/12 flex flex-col justify-around place-items-center"
 						onSubmitCapture={handleSubmit}
 					>
-						<PersonalDetails />
+						<PersonalDetails email={sUser.email} />
 						<Academics />
 						<Skills />
 						<Extracurricular />

@@ -1,7 +1,7 @@
 import Section from "@/components/Section"
 import InputField from "./InputField"
 
-export default function PersonalDetails() {
+export default function PersonalDetails({ email }) {
 	const ageArr = [17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
 	const personal = {
 		firstName: { name: "firstName", placeholder: "First Name: Anna" },
@@ -14,6 +14,7 @@ export default function PersonalDetails() {
 		mobile: { name: "mobile", placeholder: "Mobile Number (10 digits)" },
 		email: {
 			name: "email",
+			value: email,
 			placeholder: "NMIMS Email ID: anna.morgan@nmims.edu.in",
 		},
 		githubUrl: {
