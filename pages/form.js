@@ -27,12 +27,16 @@ export default function Form() {
 	// console.log(leadCount.length + projectCount.length + internCounter.length)
 
 	useEffect(() => {
-		firebase.auth().onAuthStateChanged(async user => {
+		firebase.auth().onAuthStateChanged(async (user) => {
 			if (user) {
 				const myUserID = user.uid
-				const myForm = await firebase.firestore().collectionGroup('students').where('studentID', '==', myUserID).get()
+				const myForm = await firebase
+					.firestore()
+					.collectionGroup("students")
+					.where("studentID", "==", myUserID)
+					.get()
 				setSUser(user)
-				await myForm.forEach(doc => {
+				myForm.forEach((doc) => {
 					if (doc.exists) {
 						let temp = doc.data()
 						delete temp.studentID
@@ -112,7 +116,6 @@ export default function Form() {
 	}
 
 	const handleSubmit = async (e) => {
-
 		e.preventDefault()
 
 		const data = new FormData(e.target)
@@ -205,35 +208,35 @@ export default function Form() {
 					.on("state_changed", null, (err) => console.log(err))
 			}
 			router.reload()
-			console.log('User created')
+			console.log("User created")
 		} else if (res.status == 304) {
-			alert('Incorrect SAP ID, document already exists')
-			console.log('Document already exists')
+			alert("Incorrect SAP ID, document already exists")
+			console.log("Document already exists")
 		} else {
 			router.reload()
 		}
 	}
 
 	return (
-		<div className='w-full grid place-items-center min-h-screen'>
+		<div className="w-full grid place-items-center min-h-screen">
 			<NextHead>
 				<title>NMIMS - STME Resume Form</title>
 				<link rel="shortcut icon" href="/favicon.ico"></link>
 			</NextHead>
-			<header className='w-full m-0 p-0'>
-				<nav className='w-full m-0 px-auto py-10 md:py-11 lg:py-12 flex flex-row justify-center items-center text-white bg-gray-900 select-none'>
+			<header className="w-full m-0 p-0">
+				<nav className="w-full m-0 px-auto py-10 md:py-11 lg:py-12 flex flex-row justify-center items-center text-white bg-gray-900 select-none">
 					<img
-						className='mx-3 md:mx-3 lg:mx-3 px-2 md:px-3 lg:px-4 h-10 md:h-11 lg:h-12 bg-white'
-						src='/logo.png'
-						alt='Logo of NMIMS'
+						className="mx-3 md:mx-3 lg:mx-3 px-2 md:px-3 lg:px-4 h-10 md:h-11 lg:h-12 bg-white"
+						src="/logo.png"
+						alt="Logo of NMIMS"
 					/>
-					<h1 className='mx-1 md:mx-3 lg:mx-3 px-2 md:px-3 lg:px-4 text-sm md:text-lg lg:text-xl text-center'>
+					<h1 className="mx-1 md:mx-3 lg:mx-3 px-2 md:px-3 lg:px-4 text-sm md:text-lg lg:text-xl text-center">
 						NMIMS - School of Technology Management & Engineering
 					</h1>
 				</nav>
 			</header>
 			{sUser ? (
-				<div className='w-full grid place-items-center'>
+				<div className="w-full grid place-items-center">
 					<div className="p-2 w-full flex flex-row justify-center md:justify-end">
 						<p className="mx-1 my-1 px-1 md:px-3 py-1 rounded select-none text-xs md:text-base border">
 							Logged in as {sUser.displayName}
@@ -241,7 +244,9 @@ export default function Form() {
 						{hasData && (
 							<a
 								className="mx-1 my-1 px-1 md:px-3 py-1 rounded select-none text-xs md:text-base transition-all text-white bg-gray-700 lg:hover:bg-gray-800"
-								href={`data:text/json;charset=utf-8,${encodeURIComponent(JSON.stringify(userData, null, 4))}`}
+								href={`data:text/json;charset=utf-8,${encodeURIComponent(
+									JSON.stringify(userData, null, 4)
+								)}`}
 								download={`${userData.sapID}.json`}
 							>
 								Download data
@@ -254,8 +259,10 @@ export default function Form() {
 							Logout
 						</button>
 					</div>
-					<h1 className="mx-auto mt-5 mb-1 p-1 select-none text-2xl md:text-xl">STME CV Form</h1>
-					{!hasData ?
+					<h1 className="mx-auto mt-5 mb-1 p-1 select-none text-2xl md:text-xl">
+						STME CV Form
+					</h1>
+					{!hasData ? (
 						<form
 							className="mx-auto mt-1 mb-10 p-3 w-11/12 md:w-9/12 flex flex-col justify-around place-items-center"
 							onSubmitCapture={handleSubmit}
@@ -292,18 +299,22 @@ export default function Form() {
 								</button>
 							</div>
 						</form>
-						:
-						<span className='mx-auto my-36 px-3 py-2 text-base text-center rounded-3xl select-none transition-all text-white border bg-purple-800 lg:hover:text-purple-800 lg:hover:bg-white border-purple-800'>You've already filled the form</span>
-					}
+					) : (
+						<span className="mx-auto my-36 px-3 py-2 text-base text-center rounded-3xl select-none transition-all text-white border bg-purple-800 lg:hover:text-purple-800 lg:hover:bg-white border-purple-800">
+							You've already filled the form
+						</span>
+					)}
 				</div>
 			) : (
 				<span className="mx-auto my-10 p-10">Not signed in</span>
 			)}
-			<footer className='w-full py-5 md:py-14 grid place-items-center text-white bg-gray-900 select-none'>
-				<div className='mx-auto my-1 flex flex-row justify-center'>
-					<h3 className="mx-2 my-5 px-3 py-2 flex-shrink-0 text-sm md:text-base text-center border rounded animate-pulse border-purple-700">DEVELOPED BY</h3>
+			<footer className="w-full py-5 md:py-14 grid place-items-center text-white bg-gray-900 select-none">
+				<div className="mx-auto my-1 flex flex-row justify-center">
+					<h3 className="mx-2 my-5 px-3 py-2 flex-shrink-0 text-sm md:text-base text-center border rounded animate-pulse border-purple-700">
+						DEVELOPED BY
+					</h3>
 				</div>
-				<div className='mx-auto my-5 p-1 flex flex-row justify-center divide-x text-xs md:text-base'>
+				<div className="mx-auto my-5 p-1 flex flex-row justify-center divide-x text-xs md:text-base">
 					<p className="px-3 md:px-5 lg:px-7 py-2 text-center">Shivanshu Singh</p>
 					<p className="px-4 md:px-5 lg:px-7 py-2 text-center">Milind Sathe</p>
 					<p className="px-4 md:px-5 lg:px-7 py-2 text-center">Ritish Mohapatra</p>
