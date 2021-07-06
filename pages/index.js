@@ -51,35 +51,21 @@ export default function Signin() {
 	}
 
 	return (
-		<div className="w-full grid place-items-center">
-			<header className="px-auto w-full bg-gray-900 text-white">
-				<nav className="w-full py-10 md:py-8 flex flex-row justify-center place-items-center">
-					<img
-						className="p-1 mx-2 md:mx-5 my-1 h-10 md:h-11 lg:h-12 xl:h-14 bg-white select-none"
-						src="/logo.png"
-						alt="Logo of NMIMS"
-					/>
-					<h1 className="p-1 mx-2 md:mx-5 my-1 text-base md:text-lg lg:text-xl select-none">
-						NMIMS - School of Technology Management & Engineering
-					</h1>
-				</nav>
-			</header>
-			<div className="mx-auto m-16 p-3 w-11/12 md:w-9/12 lg:w-1/2 border grid place-items-center rounded-lg">
-				<h1 className="mx-auto my-3 text-xl md:text-2xl lg:text-3xl">Guidelines</h1>
-				<ul className="m-1 p-1 list-inside list-disc">
-					{guidelines.map((guide, idx) => (
-						<li key={idx} className="m-1 p-1 text-sm">
-							{guide}
-						</li>
-					))}
-				</ul>
-				<button
-					onClick={handleSignin}
-					className="mx-auto my-5 px-3 py-2 rounded-md transition-all duration-500 text-white bg-blue-600 lg:hover:bg-blue-700"
-				>
-					Sign in with NMIMS ID
-				</button>
-			</div>
+		<div className="mx-auto my-10 md:my-14 lg:my-16 p-3 w-11/12 md:w-9/12 lg:w-1/2 border grid place-items-center rounded-lg">
+			<h1 className="mx-auto my-3 text-xl md:text-2xl lg:text-3xl">Guidelines</h1>
+			<ul className="m-1 p-1 list-inside list-disc">
+				{guidelines.map((guide, idx) => (
+					<li key={idx} className="m-1 p-1 text-xs md:text-base lg:text-base">
+						{guide}
+					</li>
+				))}
+			</ul>
+			<button
+				onClick={handleSignin}
+				className="mx-auto my-5 px-3 py-2 text-sm md:text-base lg:text-base rounded-md transition-all duration-500 text-white bg-blue-600 lg:hover:bg-blue-700"
+			>
+				Sign in with NMIMS ID
+			</button>
 			<span className='mx-auto my-5 px-3 py-2 text-red-600'>{userWarning}</span>
 		</div>
 	)

@@ -13,9 +13,10 @@ export default function Academics() {
 			placeholder: "12th Percentile: 75",
 		},
 	}
+
 	return (
 		<Section name="Academics">
-			<div className="mx-auto my-1 w-full flex flex-row justify-around">
+			<div className="mx-auto my-1 w-full flex flex-col lg:flex-row justify-around">
 				<div className="flex flex-row justify-center place-items-center">
 					<label className="mx-1 my-2 p-1 select-none">Course</label>
 					<select
@@ -57,7 +58,7 @@ export default function Academics() {
 				</div>
 			</div>
 
-			<div className="mx-auto my-1 w-full flex flex-row justify-around">
+			<div className="mx-auto my-1 w-full flex flex-col lg:flex-row justify-around">
 				<InputField data={academic.cgpa} />
 				<InputField data={academic.tenPercentile} />
 				<InputField data={academic.twelvePercentile} />

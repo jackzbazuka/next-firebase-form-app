@@ -33,32 +33,32 @@ export default function PersonalDetails({ email }) {
 	}
 	return (
 		<Section name="Personal Information">
-			<div className="mx-auto my-1 w-full flex flex-row justify-around">
+			<div className="mx-auto my-1 w-full flex flex-col md:flex-row justify-around">
 				<InputField data={personal.firstName} />
 				<InputField data={personal.lastName} />
 			</div>
 
-			<div className="mx-auto my-1 w-full flex flex-row justify-around">
+			<div className="mx-auto my-1 w-full flex flex-col md:flex-row justify-around">
 				<InputField data={personal.sapId} />
 				<InputField data={personal.keywords} />
 			</div>
 
-			<div className="mx-auto my-1 w-full flex flex-row justify-around">
+			<div className="mx-auto my-1 w-full flex flex-col md:flex-row justify-around">
 				<InputField data={personal.mobile} />
 				<InputField data={personal.email} />
 			</div>
 
-			<div className="mx-auto my-1 w-full flex flex-row justify-around">
+			<div className="mx-auto my-1 w-full flex flex-col md:flex-row justify-around">
 				<InputField data={personal.githubUrl} />
 				<InputField data={personal.linkedinUrl} />
 			</div>
 
-			<div className="mx-auto my-1 w-full flex flex-row justify-around">
+			<div className="mx-auto my-1 w-full flex flex-col md:flex-row justify-around">
 				<InputField data={personal.address} />
 			</div>
 
-			<div className="mx-auto my-1 w-full flex flex-row justify-around">
-				<div className="flex flex-row justify-center place-items-center">
+			<div className="mx-auto my-1 w-full flex flex-col md:flex-row justify-around">
+				<div className="flex flex-row justify-center items-center">
 					<label className="mx-1 my-2 p-1 select-none" htmlFor="fileToUpload">
 						Your Picture
 					</label>

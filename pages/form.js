@@ -214,28 +214,16 @@ export default function Form() {
 	}
 
 	return (
-		<div className="w-full grid place-items-center">
-			<header className="px-auto w-full bg-gray-900 text-white">
-				<nav className="w-full py-10 md:py-8 flex flex-row justify-center place-items-center">
-					<img
-						className="p-1 mx-2 md:mx-5 my-1 h-10 md:h-11 lg:h-12 xl:h-14 bg-white select-none"
-						src="/logo.png"
-						alt="Logo of NMIMS"
-					/>
-					<h1 className="p-1 mx-2 md:mx-5 my-1 text-base md:text-lg lg:text-xl select-none">
-						NMIMS - School of Technology Management & Engineering
-					</h1>
-				</nav>
-			</header>
+		<>
 			{sUser ? (
-				<>
-					<div className="p-2 w-full flex flex-row justify-end">
-						<p className="m-1 px-1 md:px-3 py-1 rounded select-none text-xs md:text-base border">
+				<div className='w-full grid place-items-center'>
+					<div className="p-2 w-full flex flex-row justify-center md:justify-end">
+						<p className="mx-1 my-1 px-1 md:px-3 py-1 rounded select-none text-xs md:text-base border">
 							Logged in as {sUser.displayName}
 						</p>
 						{hasData && (
 							<a
-								className="m-1 px-1 md:px-3 py-1 rounded select-none text-xs md:text-base transition-all text-white bg-gray-700 lg:hover:bg-gray-800"
+								className="mx-1 my-1 px-1 md:px-3 py-1 rounded select-none text-xs md:text-base transition-all text-white bg-gray-700 lg:hover:bg-gray-800"
 								href={`data:text/json;charset=utf-8,${encodeURIComponent(JSON.stringify(userData, null, 4))}`}
 								download={`${userData.sapID}.json`}
 							>
@@ -244,14 +232,12 @@ export default function Form() {
 						)}
 						<button
 							onClick={handleSignOut}
-							className="m-1 px-1 md:px-3 py-1 rounded select-none text-xs md:text-base transition-all text-white bg-red-700 lg:hover:bg-red-800"
+							className="mx-1 my-1 px-1 md:px-3 py-1 rounded select-none text-xs md:text-base transition-all text-white bg-red-700 lg:hover:bg-red-800"
 						>
 							Logout
 						</button>
 					</div>
-					<h1 className="mx-auto mt-5 mb-1 p-1 select-none text-2xl md:text-xl">
-						STME CV Form
-					</h1>
+					<h1 className="mx-auto mt-5 mb-1 p-1 select-none text-2xl md:text-xl">STME CV Form</h1>
 					{!hasData ?
 						<form
 							className="mx-auto mt-1 mb-10 p-3 w-11/12 md:w-9/12 flex flex-col justify-around place-items-center"
@@ -290,23 +276,12 @@ export default function Form() {
 							</div>
 						</form>
 						:
-						<span className='mx-auto my-40 px-3 py-2 text-base rounded-3xl select-none text-white bg-purple-800'>You've already filled the form</span>
+						<span className='mx-auto my-36 px-3 py-2 text-base text-center rounded-3xl select-none transition-all text-white border bg-purple-800 lg:hover:text-purple-800 lg:hover:bg-white border-purple-800'>You've already filled the form</span>
 					}
-					<footer className="px-auto py-16 w-full flex flex-col justify-around place-items-center select-none text-white bg-gray-900">
-						<h4 className="mx-auto my-5 px-5 py-2 text-center border animate-pulse rounded border-purple-700">
-							DEVELOPED BY
-						</h4>
-						<div className="mx-auto my-5 p-1 w-full flex flex-row justify-center divide-x">
-							<p className="px-4 py-1 text-center">Shivanshu Singh</p>
-							<p className="px-4 py-1 text-center">Milind Sathe</p>
-							<p className="px-4 py-1 text-center">Ritish Mohapatra</p>
-						</div>
-					</footer>
-				</>
+				</div>
 			) : (
-				<span className="m-10 p-10">Not signed in</span>
-			)
-			}
-		</div >
+				<span className="mx-auto my-10 p-10">Not signed in</span>
+			)}
+		</>
 	)
 }
