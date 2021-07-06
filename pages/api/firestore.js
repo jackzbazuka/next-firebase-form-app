@@ -47,9 +47,7 @@ export default async function handler(req, res) {
 			res.status(201).json({ message: "User created succesfully" })
 		} else {
 			res.status(304).json({ message: 'Doc already exists' })
-			// console.log('document already exists')
 		}
-
 	} else {
 		res.status(405).json({ message: "Method not allowed" })
 	}
