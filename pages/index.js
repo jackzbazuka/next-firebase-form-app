@@ -6,8 +6,7 @@ import firebase from "@/firebase/clientApp"
 export default function Signin() {
 	const [userWarning, setUserWarning] = useState("")
 	const [guidelines, setGuidlines] = useState([
-		"Fill the form responsibly as this will auto-generate your CV.",
-		"Generated CV will be mailed to you later.",
+		"Fill the form properly as this will auto-generate your CV. It will be mailed to you later.",
 		"Keywords field is supposed to summarize your profile/skillset/preferences.",
 		"Please follow proper sentence case and avoid unnecessary capitalizations and hyphens(-). Insert space after commas.",
 		"Kindly limit content of your Internship, Projects and Leadership fields so that the CV doesn't exceed 1 page. You will be contacted to update data if by chance it does.",
