@@ -1,6 +1,6 @@
 export default function InputField({ data }) {
 	// For testing both false else, should be false:true
-	let reqd = data.optional ? false : false
+	let reqd = data.optional ? false : true
 	// console.log(reqd, data.name)
 	let disable = data.value ? true : false
 	return (
