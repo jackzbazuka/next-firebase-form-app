@@ -68,7 +68,6 @@ export default function PersonalDetails({ email }) {
 						accept="image/*"
 						name="profilePicture"
 						id="profilePicture"
-						required
 					/>
 				</div>
 				<div className="flex flex-row justify-center place-items-center">
