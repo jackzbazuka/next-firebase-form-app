@@ -21,6 +21,7 @@ export default function DescGroup({ name, count }) {
 					name={`${name}${count}`}
 					placeholder="Description: Implemented xyz, worked in a team of 5"
 					required
+					maxLength="200"
 				/>
 			))}
 
