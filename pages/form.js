@@ -236,8 +236,8 @@ export default function Form() {
 				</nav>
 			</header>
 			{sUser ? (
-				<div className="w-full grid place-items-center">
-					<div className="p-2 w-full flex flex-row justify-center md:justify-end">
+				<div className="w-full m-0 p-0 grid place-items-center">
+					<div className="w-full m-auto p-2 flex flex-row justify-center md:justify-end">
 						<p className="mx-1 my-1 px-1 md:px-3 py-1 rounded select-none text-xs md:text-base border">
 							Logged in as {sUser.displayName}
 						</p>
@@ -309,8 +309,8 @@ export default function Form() {
 				<span className="mx-auto my-10 p-10">Not signed in</span>
 			)}
 			<footer className="w-full py-5 md:py-14 grid place-items-center text-white bg-gray-900 select-none">
-				<div className="mx-auto my-3 flex flex-row justify-center">
-					<h4 className="w-36 p-3 text-sm md:text-base lg:text-base text-center border rounded animate-pulse border-purple-700">DEVELOPED BY</h4>
+				<div className="mx-auto my-3 p-1 flex flex-row justify-center">
+					<h4 className="px-3 py-2 text-sm md:text-base lg:text-base text-center border rounded animate-pulse border-purple-700">DEVELOPED BY</h4>
 				</div>
 				<div className="mx-auto my-5 p-1 flex flex-row justify-center divide-x text-xs md:text-base">
 					<p className="px-3 md:px-5 lg:px-7 py-2 text-center">Shivanshu Singh</p>

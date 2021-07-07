@@ -84,8 +84,8 @@ export default function Signin() {
 				<span className="mx-auto my-5 px-3 py-2 text-red-600">{userWarning}</span>
 			</div>
 			<footer className="w-full py-5 md:py-14 grid place-items-center text-white bg-gray-900 select-none">
-				<div className="mx-auto my-3 flex flex-row justify-center">
-					<h4 className="w-36 p-3 text-sm md:text-base lg:text-base text-center border rounded animate-pulse border-purple-700">DEVELOPED BY</h4>
+				<div className="mx-auto my-3 p-1 flex flex-row justify-center">
+					<h4 className="px-3 py-2 text-sm md:text-base lg:text-base text-center border rounded animate-pulse border-purple-700">DEVELOPED BY</h4>
 				</div>
 				<div className="mx-auto my-5 p-1 flex flex-row justify-center divide-x text-xs md:text-base">
 					<p className="px-3 md:px-5 lg:px-7 py-2 text-center">Shivanshu Singh</p>
