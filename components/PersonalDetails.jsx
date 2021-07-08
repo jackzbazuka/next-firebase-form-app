@@ -81,6 +81,7 @@ export default function PersonalDetails({ email, userData }) {
 						id="age"
 						className="m-2 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
 						required
+						value={userData ? userData.age : ""}
 					>
 						{ageArr.map((item) => (
 							<option key={item} value={`${item}`}>
@@ -95,6 +96,7 @@ export default function PersonalDetails({ email, userData }) {
 						name="gender"
 						id="gender"
 						className="m-2 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+						value={userData ? userData.gender : ""}
 						required
 					>
 						<option value="male">Male</option>
