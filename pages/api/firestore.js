@@ -5,17 +5,22 @@ export default async function handler(req, res) {
 	const { method, body } = req
 
 	const db = admin.firestore()
-	const myForm = await db.collectionGroup('students').where('sapID', '==', body.sapID).get()
+	const myForm = await db.collectionGroup("students").where("sapID", "==", body.sapID).get()
 	let DOC_EXISTS = false
 
 	if (method == "POST") {
-		myForm.forEach(doc => {
-			if (doc.exists) {
-				DOC_EXISTS = true
-			}
-		})
-		if (!DOC_EXISTS) {
-			await db.collection('student').doc(`${body.course}-${body.graduationYear}`).collection('students').doc(body.sapID).set({
+		// myForm.forEach(doc => {
+		// 	if (doc.exists) {
+		// 		DOC_EXISTS = true
+		// 	}
+		// })
+		// if (!DOC_EXISTS) {
+		await db
+			.collection("student")
+			.doc(`${body.course}-${body.graduationYear}`)
+			.collection("students")
+			.doc(body.sapID)
+			.set({
 				studentID: body.uid,
 				firstName: body.firstName,
 				lastName: body.lastName,
@@ -44,11 +49,11 @@ export default async function handler(req, res) {
 				leadership: body.leadershipArray,
 				createdAt: firebase.firestore.FieldValue.serverTimestamp(),
 			})
-			res.status(201).json({ message: "User created succesfully" })
-		} else {
-			res.status(304).json({ message: 'Doc already exists' })
-		}
+		res.status(201).json({ message: "User created succesfully" })
 	} else {
-		res.status(405).json({ message: "Method not allowed" })
+		res.status(304).json({ message: "Doc already exists" })
 	}
+	// } else {
+	// 	res.status(405).json({ message: "Method not allowed" })
+	// }
 }

@@ -25,7 +25,7 @@ export default function Form() {
 	let dynamicCount = leadCount.length + projectCount.length + internCounter.length
 	// console.log(dynamicCount)
 	// console.log(leadCount.length + projectCount.length + internCounter.length)
-
+	// console.log(sUser)
 	useEffect(() => {
 		firebase.auth().onAuthStateChanged(async (user) => {
 			if (user) {
@@ -36,6 +36,7 @@ export default function Form() {
 					.where("studentID", "==", myUserID)
 					.get()
 				setSUser(user)
+				// if (!userData)
 				myForm.forEach((doc) => {
 					if (doc.exists) {
 						let temp = doc.data()
@@ -43,6 +44,7 @@ export default function Form() {
 						delete temp.createdAt
 						setUserData(temp)
 						setHasData(true)
+						// console.log("State called")
 					}
 				})
 			} else {
@@ -163,7 +165,7 @@ export default function Form() {
 			// personal
 			firstName: data.get("firstName"),
 			lastName: data.get("lastName"),
-			sapID: data.get("sapId"),
+			sapID: data.get("sapID"),
 			keywords: data.get("keywords"),
 			email: sUser.email,
 			mobile: data.get("mobile"),
@@ -262,48 +264,52 @@ export default function Form() {
 					<h1 className="mx-auto mt-5 mb-1 p-1 select-none text-2xl md:text-xl">
 						STME CV Form
 					</h1>
-					{!hasData ? (
-						<form
-							className="mx-auto mt-1 mb-10 p-3 w-11/12 md:w-9/12 flex flex-col justify-around place-items-center"
-							onSubmitCapture={handleSubmit}
-						>
-							<PersonalDetails email={sUser.email} />
-							<Academics />
-							<Skills />
-							<Extracurricular />
-							<Internship
-								internCounter={internCounter}
-								addInternship={addInternship}
-								removeInternship={removeInternship}
-							/>
-							<Project
-								projectCount={projectCount}
-								addProject={addProject}
-								removeProject={removeProject}
-							/>
-							<Leadership
-								leadCount={leadCount}
-								addLead={addLead}
-								removeLead={removeLead}
-							/>
-							<div className="m-1 p-1 w-full border-t-2 flex flex-col justify-around place-items-center ">
-								<p className="m-1 p-1 text-xs select-none italic">
-									(You've checked all the form values and are ready to submit the
-									data)
-								</p>
-								<button
-									type="submit"
-									className="mx-auto my-5 px-10 py-2 select-none transition-all duration-500 text-white bg-gray-700 lg:hover:rounded-3xl lg:hover:bg-gray-800"
-								>
-									Submit
-								</button>
-							</div>
-						</form>
-					) : (
+					{/* {!hasData ? ( */}
+					<form
+						className="mx-auto mt-1 mb-10 p-3 w-11/12 md:w-9/12 flex flex-col justify-around place-items-center"
+						onSubmitCapture={handleSubmit}
+					>
+						<PersonalDetails email={sUser.email} userData={userData} />
+						<Academics userData={userData} />
+						<Skills userData={userData} />
+						<Extracurricular userData={userData} />
+						<Internship
+							internCounter={internCounter}
+							addInternship={addInternship}
+							removeInternship={removeInternship}
+							userData={userData}
+						/>
+						<Project
+							projectCount={projectCount}
+							addProject={addProject}
+							removeProject={removeProject}
+							userData={userData}
+						/>
+						<Leadership
+							leadCount={leadCount}
+							addLead={addLead}
+							removeLead={removeLead}
+							userData={userData}
+						/>
+						<div className="m-1 p-1 w-full border-t-2 flex flex-col justify-around place-items-center ">
+							<p className="m-1 p-1 text-xs select-none italic">
+								(You've checked all the form values and are ready to submit the
+								data)
+							</p>
+							<button
+								type="submit"
+								className="mx-auto my-5 px-10 py-2 select-none transition-all duration-500 text-white bg-gray-700 lg:hover:rounded-3xl lg:hover:bg-gray-800"
+							>
+								Submit
+							</button>
+						</div>
+					</form>
+					{/* {) 
+					: (
 						<span className="mx-auto my-36 px-3 py-2 text-base text-center rounded-3xl select-none transition-all text-white border bg-purple-800 lg:hover:text-purple-800 lg:hover:bg-white border-purple-800">
 							You've already filled the form
 						</span>
-					)}
+					)} */}
 				</div>
 			) : (
 				<span className="mx-auto my-10 p-10">Not signed in</span>
