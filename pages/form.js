@@ -22,6 +22,7 @@ export default function Form() {
 	const [sUser, setSUser] = useState(null)
 	const [hasData, setHasData] = useState(false)
 	const [userData, setUserData] = useState(null)
+	const [dbDocRef, setDbDocRef] = useState(null)
 	let dynamicCount = leadCount.length + projectCount.length + internCounter.length
 	// console.log(dynamicCount)
 	// console.log(leadCount.length + projectCount.length + internCounter.length)
@@ -38,6 +39,7 @@ export default function Form() {
 				setSUser(user)
 				myForm.forEach((doc) => {
 					if (doc.exists) {
+						setDbDocRef(doc.ref)
 						let temp = doc.data()
 						delete temp.studentID
 						delete temp.createdAt
@@ -100,6 +102,16 @@ export default function Form() {
 		let dateArray = date.split("-")
 		let monthYear = `${months[dateArray[1] - 1]} ${dateArray[0]}`
 		return monthYear
+	}
+
+	const handleDelete = async (e) => {
+		e.preventDefault()
+		try {
+			const res = await dbDocRef.delete()
+			router.reload()
+		} catch (err) {
+			console.log(err)
+		}
 	}
 
 	const handleSignOut = async (e) => {
@@ -237,20 +249,28 @@ export default function Form() {
 			</header>
 			{sUser ? (
 				<div className="w-full m-0 p-0 grid place-items-center">
-					<div className="w-full m-auto p-2 flex flex-row justify-center md:justify-end">
-						<p className="mx-1 my-1 px-1 md:px-3 py-1 rounded select-none text-xs md:text-base border">
+					<div className="w-full m-auto p-2 flex flex-col md:flex-row justify-center md:justify-end">
+						<p className="mx-1 my-1 px-1 md:px-3 py-1 rounded text-center select-none text-xs md:text-base border">
 							Logged in as {sUser.displayName}
 						</p>
 						{hasData && (
-							<a
-								className="mx-1 my-1 px-1 md:px-3 py-1 rounded select-none text-xs md:text-base transition-all text-white bg-gray-700 lg:hover:bg-gray-800"
-								href={`data:text/json;charset=utf-8,${encodeURIComponent(
-									JSON.stringify(userData, null, 4)
-								)}`}
-								download={`${userData.sapID}.json`}
-							>
-								Download data
-							</a>
+							<>
+								<a
+									className="mx-1 my-1 px-1 md:px-3 py-1 rounded select-none text-xs md:text-base text-center transition-all text-white bg-gray-700 lg:hover:bg-gray-800"
+									href={`data:text/json;charset=utf-8,${encodeURIComponent(
+										JSON.stringify(userData, null, 4)
+									)}`}
+									download={`${userData.sapID}.json`}
+								>
+									Download data
+								</a>
+								<button
+									onClick={handleDelete}
+									className="mx-1 my-1 px-1 md:px-3 py-1 rounded select-none text-xs md:text-base transition-all text-white bg-gray-700 lg:hover:bg-gray-800"
+								>
+									Delete data
+								</button>
+							</>
 						)}
 						<button
 							onClick={handleSignOut}
