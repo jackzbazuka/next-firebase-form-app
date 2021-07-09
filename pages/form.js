@@ -136,9 +136,7 @@ export default function Form() {
 			const leadershipData = {
 				leadName: data.get(`leadName${leadership}`),
 				leadRole: data.get(`leadRole${leadership}`),
-				leadDur: `${dateFormatter(
-					data.get(`leadDuraStart${leadership}`)
-				)} - ${dateFormatter(data.get(`leadDuraEnd${leadership}`))}`,
+				leadDur: `${data.get(`leadDuraStartMonth${leadership}`)} ${data.get(`leadDuraStartYear${leadership}`)} - ${data.get(`leadDuraEndMonth${leadership}`)} ${data.get(`leadDuraEndYear${leadership}`)}`,
 				leadDesc: data.getAll(`leadDesc${leadership}`),
 			}
 			return leadershipData
@@ -148,9 +146,7 @@ export default function Form() {
 			const internshipData = {
 				orgName: data.get(`orgName${internship}`),
 				internRole: data.get(`internRole${internship}`),
-				internDur: `${dateFormatter(
-					data.get(`internDuraStart${internship}`)
-				)} - ${dateFormatter(data.get(`internDuraEnd${internship}`))}`,
+				internDur: `${data.get(`internDuraStartMonth${internship}`)} ${data.get(`internDuraStartYear${internship}`)} - ${data.get(`internDuraEndMonth${internship}`)} ${data.get(`internDuraEndYear${internship}`)}`,
 				internDesc: data.getAll(`internDesc${internship}`),
 			}
 			return internshipData
@@ -160,9 +156,7 @@ export default function Form() {
 			const projectData = {
 				projName: data.get(`projName${project}`),
 				projTool: data.get(`projTool${project}`),
-				projDur: `${dateFormatter(data.get(`projDuraStart${project}`))} - ${dateFormatter(
-					data.get(`projDuraEnd${project}`)
-				)}`,
+				projDur: `${data.get(`projDuraStartMonth${project}`)} ${data.get(`projDuraStartYear${project}`)} - ${data.get(`projDuraEndMonth${project}`)} ${data.get(`projDuraEndYear${project}`)}`,
 				projDesc: data.getAll(`projDesc${project}`),
 			}
 			return projectData
