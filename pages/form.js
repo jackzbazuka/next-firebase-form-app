@@ -84,26 +84,6 @@ export default function Form() {
 		setProjectCount(projectCount)
 	}
 
-	const dateFormatter = (date) => {
-		let months = [
-			"Jan",
-			"Feb",
-			"Mar",
-			"Apr",
-			"May",
-			"Jun",
-			"Jul",
-			"Aug",
-			"Sep",
-			"Oct",
-			"Nov",
-			"Dec",
-		]
-		let dateArray = date.split("-")
-		let monthYear = `${months[dateArray[1] - 1]} ${dateArray[0]}`
-		return monthYear
-	}
-
 	const handleDelete = async (e) => {
 		e.preventDefault()
 		try {

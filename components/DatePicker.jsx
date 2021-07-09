@@ -1,4 +1,5 @@
 export default function DatePicker({ field, count }) {
+
 	const months = [
 		"Jan",
 		"Feb",
@@ -21,6 +22,7 @@ export default function DatePicker({ field, count }) {
 		'2021',
 		'2022'
 	]
+
 	return (
 		<div className="mx-auto my-1 w-full flex flex-col md:flex-row justify-around place-items-center">
 			<p className="m-1 p-1 text-base select-none">Work Duration: </p>
