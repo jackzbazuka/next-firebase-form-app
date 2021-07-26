@@ -1,3 +1,3 @@
 # next-firebase-form-app
 
-Next.js app with Firebase
+Next.js form app with Firebase
